@@ -4,6 +4,7 @@
   imports =
     [
       # Include the results of the hardware scan.
+      ./i3.nix
       ./hardware-configuration.nix
       <sops-nix/modules/sops>
     ];
@@ -43,24 +44,16 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     enable = true;
   };
-  services = {
-    flatpak.enable = true;
-    xserver = {
+  
+  services.flatpak.enable = true;
+  
+  services.xserver = {
       enable = true;
       layout = "us";
       xkbVariant = "";
 
       desktopManager = {
         xterm.enable = false;
-      };
-
-      displayManager = {
-        defaultSession = "none+i3";
-      };
-
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
       };
 
       videoDrivers = [ "nvidia" ];
@@ -82,7 +75,6 @@
           EndSection
       '';
     };
-  };
 
   hardware = {
     opengl = {
@@ -184,7 +176,7 @@
       xorg.xwininfo
       yad
     ];
-    sessionVariables = rec {
+    sessionVariables = {
       XDG_CACHE_HOME = "\${HOME}/.cache";
       XDG_CONFIG_HOME = "\${HOME}/.config";
       XDG_BIN_HOME = "\${HOME}/.local/bin";
