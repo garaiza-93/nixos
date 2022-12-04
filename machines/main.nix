@@ -38,11 +38,11 @@
       fsType = "vfat";
     };
     "/home/hd1" = {
-      device = "/dev/sda1";
+      device = "/dev/sdb1";
       fsType = "ext4";
     };
     "/home/ssd1" = {
-      device = "/dev/sdb1";
+      device = "/dev/sda1";
       fsType = "ext4";
     };
   };
