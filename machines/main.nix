@@ -5,6 +5,8 @@
     [
       (modulesPath + "/installer/scan/not-detected.nix")
       ../core/boot.nix
+      ../core/sound.nix
+      ../fonts.nix
       ../core/drivers/nvidia.nix
       ../configuration.nix
     ];
