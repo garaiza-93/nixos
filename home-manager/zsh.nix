@@ -8,7 +8,7 @@
       l = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
       sysedit = "nvim ~/.config/nixpkgs";
-      sysbuild = "sudo nixos-rebuild switch --flake";
+      sysbuild = "sudo nixos-rebuild switch --flake '.#main'";
     };
     history = {
       size = 10000;
