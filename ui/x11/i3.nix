@@ -7,25 +7,13 @@
     config = rec {
       modifier = "Mod1";
 
-      menu = "${pkgs.dmenu}/bin/dmenu_run";
+      menu = "${pkgs.rofi}/bin/rofi";
       terminal = "${pkgs.kitty}/bin/kitty";
 
       fonts = {
         names = [ "Hack Nerd Font" ];
         size = 8.0;
       };
-
-      bars = [
-        {
-          id = "bar-1";
-          position = "top";
-          fonts = {
-            names = [ "Hack Nerd Font" ];
-            size = 8.5;
-          };
-          statusCommand = "i3status";
-        }
-      ];
 
       window.border = 1;
 
