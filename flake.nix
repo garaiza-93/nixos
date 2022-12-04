@@ -14,8 +14,9 @@
         EVA-01 = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./machines/EVA-01/EVA-01.nix
+            ./machines/EVA-01.nix
             ./env/nvidia.nix
+            ./dev/global.nix
             ./ui/x11/xserver/EVA-01.nix
             home-manager.nixosModules.home-manager
             {
