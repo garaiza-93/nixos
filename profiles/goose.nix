@@ -1,4 +1,4 @@
-{ home, pkgs, ... }:
+{ home, config, pkgs, ... }:
 
 {
   home.stateVersion = "22.11";
@@ -6,7 +6,7 @@
 
   imports = [
     ../ui/x11/i3.nix
-    ../home-manager/apps.nix
-    ../apps/steam.nix
+    ../home-manager/home.nix
+    ../apps/apps.nix
   ];
 }
