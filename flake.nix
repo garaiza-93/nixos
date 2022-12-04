@@ -14,6 +14,13 @@
   outputs = { self, nixpkgs, home-manager, i3-master }:
     let
       system = "x86_64-linux";
+
+      overlays = [
+        (final: prev: {
+          i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
+        })
+      ];
+
     in
     {
       nixosConfigurations = {
@@ -25,6 +32,7 @@
             ./apps/apps.nix
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.goose = { ... }: {
