@@ -3,6 +3,11 @@
 {
   services.xserver = {
     enable = true;
+    windowManager.i3.enable = true;
+    layout = "us";
+    xkbVariant = "";
+    desktopManager.xterm.enable = false;
+    displayManager.defaultSession = "none+i3";
     config = ''
       Section "Screen"
         Identifier      "Screen0"
