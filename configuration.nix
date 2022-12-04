@@ -4,9 +4,10 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./i3.nix
       ./hardware-configuration.nix
       <sops-nix/modules/sops>
+      <home-manager/nixos>
+      ./home.nix
     ];
 
   boot = {
@@ -44,37 +45,46 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     enable = true;
   };
-  
+
   services.flatpak.enable = true;
-  
+
   services.xserver = {
-      enable = true;
-      layout = "us";
-      xkbVariant = "";
+    enable = true;
+    layout = "us";
+    xkbVariant = "";
 
-      desktopManager = {
-        xterm.enable = false;
-      };
-
-      videoDrivers = [ "nvidia" ];
-      config = ''
-          Section "Screen"
-              Identifier      "Screen0"
-        Device          "Device0"
-        Monitor         "Monitor0"
-        DefaultDepth    24
-        Option          "Stereo" "0"
-        Option          "nvidiaXineramaInfoOrder" "DFP-4"
-        Option          "metamodes" "2560x1440_144 +0+0"
-        Option          "SLI" "Off"
-        Option          "MultiGPU" "off"
-        Option          "BaseMosaic" "off"
-        SubSection      "Display"
-            Depth       24
-        EndSubSection
-          EndSection
-      '';
+    desktopManager = {
+      xterm.enable = false;
     };
+
+    displayManager = {
+      defaultSession = "none+i3";
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
+
+    videoDrivers = [ "nvidia" ];
+    config = ''
+        Section "Screen"
+            Identifier      "Screen0"
+      Device          "Device0"
+      Monitor         "Monitor0"
+      DefaultDepth    24
+      Option          "Stereo" "0"
+      Option          "nvidiaXineramaInfoOrder" "DFP-4"
+      Option          "metamodes" "2560x1440_144 +0+0"
+      Option          "SLI" "Off"
+      Option          "MultiGPU" "off"
+      Option          "BaseMosaic" "off"
+      SubSection      "Display"
+          Depth       24
+      EndSubSection
+        EndSection
+    '';
+  };
 
   hardware = {
     opengl = {

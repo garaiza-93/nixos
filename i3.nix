@@ -1,14 +1,12 @@
 { pkgs, lib, ... }:
 {
-  services.xserver.windowManager.i3 = {
-  enable = true;
-  displayManager.defaultSession = "none+i3";
-  package = pkgs.i3-gaps;
+  xsession.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
     config = rec {
       modifier = "Mod1";
       menu = "${pkgs.dmenu}/bin/dmenu_run";
-      terminal = "kitty";
-
+      terminal = "${pkgs.kitty}/bin/kitty";
       bars = [
         {
           id = "bar-1";
