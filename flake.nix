@@ -14,12 +14,6 @@
   outputs = { self, nixpkgs, home-manager, i3-master }:
     let
       system = "x86_64-linux";
-
-      overlays = [
-        (final: prev: {
-          i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
-        })
-      ];
     in
     {
       nixosConfigurations = {
