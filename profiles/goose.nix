@@ -5,7 +5,7 @@
   manual.manpages.enable = true;
 
   imports = [
-    ../ui/x11/i3.nix
+    ../ui/x11/ui.nix
     ../home-manager/home.nix
   ];
 }
