@@ -1,5 +1,5 @@
 # WOOOOOOOO LET'S GO NIIIIIIIX
-## it's really not all that, just useful for reproducible machgines.
+## it's really not all that, just useful for reproducible machines.
 My NixOS config uses flakes, but probably sucks and will probably break. As of now, I haven't tested it, so go wild.
 
 ### Thanks, and have fun!
