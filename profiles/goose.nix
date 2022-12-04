@@ -7,6 +7,5 @@
   imports = [
     ../ui/x11/i3.nix
     ../home-manager/home.nix
-    ../apps/apps.nix
   ];
 }

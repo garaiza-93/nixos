@@ -16,6 +16,7 @@
           modules = [
             ./machines/main.nix
             ./ui/x11/xserver/EVA-01.nix
+            ./apps/apps.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
