@@ -33,8 +33,8 @@
       workspaceAutoBackAndForth = true;
 
       assigns = {
-        "1: web" = [{ class = "^Firefox$"; }];
-        "2: games" = [{ class = "^Steam$"; }];
+        "$ws1" = [{ class = "^Firefox$"; }];
+        "$ws2" = [{ class = "^Steam$"; }];
       };
 
       keybindings = lib.mkOptionDefault {
