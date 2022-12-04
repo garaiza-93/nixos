@@ -8,11 +8,11 @@
       l = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
       sysedit = "nvim ~/.config/nixpkgs";
-      sysbuild = "sudo nixos-rebuild switch --flake '.#main'";
+      sysbuild = "cd ~/.config/nixpkgs && sudo nixos-rebuild switch --flake '.#main'";
     };
     history = {
       size = 10000;
-      path = "~/.cache/zsh_history";
+      path = "$HOME/.cache/zsh_history";
     };
   };
 }
