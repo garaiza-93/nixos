@@ -7,8 +7,8 @@
     config = rec {
       modifier = "Mod1";
 
-      menu = "${pkgs.rofi}/bin/rofi";
-      terminal = "${pkgs.kitty}/bin/kitty";
+      menu = "rofi";
+      terminal = "kitty";
 
       fonts = {
         names = [ "Hack Nerd Font" ];
