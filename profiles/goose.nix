@@ -6,6 +6,6 @@
 
   imports = [
     ../ui/x11/i3.nix
-    ../apps/apps.nix
+    ../home-manager/apps.nix
   ];
 }
