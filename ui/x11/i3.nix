@@ -29,6 +29,11 @@
 
       window.border = 1;
 
+      gaps = {
+        inner = 5;
+        outer = 5;
+      };
+
       defaultWorkspace = "$ws1";
       workspaceAutoBackAndForth = true;
 

@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "i3-master": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668877886,
+        "narHash": "sha256-YIDS8rQi/AENKxUoU5R388DVd0rTGd/M2wqzndaSXI4=",
+        "owner": "i3",
+        "repo": "i3",
+        "rev": "30131ed69795387ddc576b5dab24b5649e5b8583",
+        "type": "github"
+      },
+      "original": {
+        "owner": "i3",
+        "repo": "i3",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1670064435,
@@ -40,6 +56,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "i3-master": "i3-master",
         "nixpkgs": "nixpkgs"
       }
     },
