@@ -1,6 +1,6 @@
 # WOOOOOOOO LET'S GO NIIIIIIIX
-## it's really not all that, just useful for reproducible dotfiles.
-All of the dotfiles i use with Nix are here. They suck, and will probably break as I stumble through the Nix language.
+## it's really not all that, just useful for reproducible machgines.
+My NixOS config uses flakes, but probably sucks and will probably break. As of now, I haven't tested it, so go wild.
 
 ### Thanks, and have fun!
 
