@@ -24,27 +24,28 @@
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
 
-    fileSystems = {
-      "/" = {
-        device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
-        fsType = "ext4";
-      };
-      "/boot/efi" = {
-        device = "/dev/disk/by-uuid/0162-22F2";
-        fsType = "vfat";
-      };
-      "/home/hd1" = {
-        device = "/dev/sda1";
-        fsType = "ext4";
-      };
-      "/home/ssd1" = {
-        device = "/dev/sdb1";
-        fsType = "ext4";
-      };
-    };
-
-    swapDevices = [ ];
   };
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
+      fsType = "ext4";
+    };
+    "/boot/efi" = {
+      device = "/dev/disk/by-uuid/0162-22F2";
+      fsType = "vfat";
+    };
+    "/home/hd1" = {
+      device = "/dev/sda1";
+      fsType = "ext4";
+    };
+    "/home/ssd1" = {
+      device = "/dev/sdb1";
+      fsType = "ext4";
+    };
+  };
+
+  swapDevices = [ ];
 
   xdg.portal = {
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -79,6 +80,15 @@
       PATH = [
         "\${XDG_BIN_HOME}"
       ];
+    };
+  };
+
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.goose = {
+      isNormalUser = true;
+      description = "goose";
+      extraGroups = [ "networkmanager" "wheel" "audio" ];
     };
   };
 }

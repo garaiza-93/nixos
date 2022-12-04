@@ -3,7 +3,6 @@
 {
   xsession.windowManager.i3 = {
     enable = true;
-    package = pkgs.i3-gaps;
     config = rec {
       modifier = "Mod1";
       menu = "${pkgs.dmenu}/bin/dmenu_run";
