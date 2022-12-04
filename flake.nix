@@ -11,17 +11,16 @@
     in
     {
       nixosConfigurations = {
-        EVA-01 = nixpkgs.lib.nixosSystem {
+        main = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./machines/EVA-01.nix
-            ./env/nvidia.nix
-            ./dev/global.nix
+            ./machines/main.nix
             ./ui/x11/xserver/EVA-01.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];
               };
