@@ -10,43 +10,16 @@
       ./home.nix
     ];
 
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-    };
-    kernelPackages = pkgs.linuxPackages_6_0;
-  };
 
   networking = {
-    hostName = "EVA-01";
     networkmanager.enable = true;
   };
 
-  time.timeZone = "America/Chicago";
-
-  i18n.defaultLocale = "en_US.utf8";
-
-  fileSystems = {
-    "/home/hd1" = {
-      device = "/dev/sda1";
-      fsType = "ext4";
-    };
-    "/home/ssd1" = {
-      device = "/dev/sdb1";
-      fsType = "ext4";
-    };
-  };
 
   xdg.portal = {
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     enable = true;
   };
-
-  services.flatpak.enable = true;
 
   services.xserver = {
     enable = true;
@@ -65,38 +38,9 @@
       enable = true;
       package = pkgs.i3-gaps;
     };
-
-    videoDrivers = [ "nvidia" ];
-    config = ''
-        Section "Screen"
-            Identifier      "Screen0"
-      Device          "Device0"
-      Monitor         "Monitor0"
-      DefaultDepth    24
-      Option          "Stereo" "0"
-      Option          "nvidiaXineramaInfoOrder" "DFP-4"
-      Option          "metamodes" "2560x1440_144 +0+0"
-      Option          "SLI" "Off"
-      Option          "MultiGPU" "off"
-      Option          "BaseMosaic" "off"
-      SubSection      "Display"
-          Depth       24
-      EndSubSection
-        EndSection
-    '';
   };
 
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-    };
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-      extraConfig = "load-module module-combine-sink";
-    };
     xpadneo.enable = true;
   };
 
@@ -111,7 +55,6 @@
         discord
         grapejuice
         firefox
-        neofetch
         protonup-ng
         prismlauncher-qt5
         qbittorrent
@@ -157,15 +100,9 @@
       cargo
       curl
       gcc
-      git
       gparted
-      home-manager
-      htop
       flameshot
-      killall
-      libglibutil
       lightdm
-      gnumake
       neovim
       networkmanager-openvpn
       nix-index
@@ -173,18 +110,12 @@
       peek
       plocate
       ripgrep
-      thefuck
       timeshift
-      tmux
       unetbootin
-      unzip
-      vim
       wine
       winetricks
-      wget
       xdotool
       xorg.xwininfo
-      yad
     ];
     sessionVariables = {
       XDG_CACHE_HOME = "\${HOME}/.cache";
@@ -203,20 +134,5 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  system.stateVersion = "22.05";
 
 }
