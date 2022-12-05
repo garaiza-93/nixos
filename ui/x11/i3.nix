@@ -101,12 +101,12 @@
       set $refresh_i3status killall -SIGUSR1 i3status
       tiling_drag modifier titlebar
       exec_always --no-startup-id systemctl --user restart polybar.service
-      set $ws0 "0"
-      set $ws1 "1"
-      set $ws2 "2"
-      set $ws3 "3"
-      set $ws4 "4"
-      set $ws5 "5"
+      set $ws0 "1"
+      set $ws1 "2"
+      set $ws2 "3"
+      set $ws3 "4"
+      set $ws4 "5"
+      set $ws5 "6"
     '';
   };
 }
