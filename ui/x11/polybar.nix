@@ -8,15 +8,21 @@
       "bar/top" = {
         width = "100%";
         height = "34";
+        monitor = "\${env:MONITOR:DP-2}";
 
-        background = "#00000000";
-        foreground = "#ccffffff";
+        background = "#111111";
+        foreground = "#ccffff";
 
-        font-0 = "Hack:size-8";
+        font-0 = "Hack:size=8";
 
         modules-left = "i3";
         modules-right = "wireless-network date";
 
+      };
+
+      "module/i3" = {
+        type = "internal/i3";
+        pin-workspaces = true;
       };
 
       "module/date" = {
