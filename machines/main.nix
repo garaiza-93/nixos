@@ -25,8 +25,9 @@
     };
     kernelModules = [ "kvm-amd" ];
     extraModulePackages = [ ];
-
   };
+
+  services.blueman.enable = true;
 
   fileSystems = {
     "/" = {
