@@ -3,7 +3,8 @@
 {
   programs = {
     java.enable = true;
-    zsh.enable = true;
+    feh.enable = true;
+    mpv.enable = true;
   };
 
   home.packages = with pkgs; [
