@@ -1,13 +1,6 @@
 { self, pkgs, ... }:
 
-let
-  defaultUser = "goose";
-in
 {
-  imports = [ ];
-  environment.variables = { };
-
-
   boot = {
     loader = {
       systemd-boot.enable = true;
