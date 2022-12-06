@@ -39,11 +39,11 @@
       fsType = "vfat";
     };
     "/home/hd1" = {
-      device = "/dev/sdb1";
+      device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";
       fsType = "ext4";
     };
     "/home/ssd1" = {
-      device = "/dev/sda1";
+      device = "/dev/disk/by-uuid/535f71b3-d1bb-4dce-9ab3-3cd91bf431fc";
       fsType = "ext4";
     };
   };
