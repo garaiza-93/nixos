@@ -65,6 +65,7 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     video.hidpi.enable = lib.mkDefault true;
     xpadneo.enable = true;
+    bluetooth.enable = true;
   };
 
   time.timeZone = "America/Chicago";
