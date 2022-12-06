@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ self, pkgs, lib, ... }:
 
 {
   xsession.windowManager.i3 = {
@@ -101,6 +101,7 @@
       set $refresh_i3status killall -SIGUSR1 i3status
       tiling_drag modifier titlebar
       exec_always --no-startup-id systemctl --user restart polybar.service
+      exec_always --no-startup-id feh --bg-scale ${self}/wallpapers/eva01.png
       set $ws0 "1"
       set $ws1 "2"
       set $ws2 "3"
