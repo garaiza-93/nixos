@@ -36,26 +36,32 @@
       "bar/top" = {
         enable-ipc = true;
         override-redirect = false;
-
         bottom = false;
 
         width = "100%";
-        height = "22";
+        height = "24pt";
+        radius = 6;
+
+        line-size = "3pt";
+
+        border-size = "4pt";
+        border-color = "#000000ff";
+
+        padding-left = 0;
+        padding-right = 1;
+
         monitor = "\${env:MONITOR:DP-2}";
 
         background = "${colors.dark}";
         foreground = "${colors.light}";
-
-        line-color = "${colors.light-purple}";
-        line-size = 2;
-
-        separator = "|";
 
         font-0 = "${fonts.hack}";
 
         wm-restack = "i3";
         tray-position = "left";
 
+        separator = "|";
+        module-margin = 1;
         modules-left = "workspaces";
         modules-right = "wireless-network date";
 
@@ -104,10 +110,9 @@
 
       "module/date" = {
         type = "internal/date";
-        internal = 1;
         date = "%d.%m.%y";
         time = "%H:%M:%S";
-        label = "%date% %time%";
+        label = "%date% | %time%";
       };
     };
 
