@@ -17,6 +17,4 @@
     ./tmux.nix
     ./zsh.nix
   ];
-
-  services.blueman-applet.enable = true;
 }
