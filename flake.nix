@@ -19,9 +19,6 @@
         (final: prev: {
           i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
         })
-        (self: super: {
-          polybar = super.polybar.override { i3Support = true; pulseSupport = true; };
-        })
       ];
 
     in
