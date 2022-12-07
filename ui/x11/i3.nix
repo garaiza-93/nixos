@@ -1,5 +1,8 @@
 { self, pkgs, lib, ... }:
 
+let
+  wallpapers = ../../wallpapers;
+in
 {
   xsession.windowManager.i3 = {
     enable = true;
@@ -20,8 +23,8 @@
       bars = [ ];
 
       gaps = {
-        inner = 5;
-        outer = 5;
+        top = 40;
+        inner = 10;
       };
 
       defaultWorkspace = "$ws0";
@@ -33,8 +36,8 @@
       };
 
       keybindings = lib.mkOptionDefault {
-        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status";
-        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status";
+        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status";
         "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status";
         "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status";
 
@@ -101,7 +104,7 @@
       set $refresh_i3status killall -SIGUSR1 i3status
       tiling_drag modifier titlebar
       exec_always --no-startup-id systemctl --user restart polybar.service
-      exec_always --no-startup-id feh --bg-scale ${self}/wallpapers/eva01.png
+      exec_always --no-startup-id feh --bg-scale ${wallpapers}/eva01.png
       set $ws0 "1"
       set $ws1 "2"
       set $ws2 "3"
