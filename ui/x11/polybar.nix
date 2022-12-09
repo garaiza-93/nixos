@@ -19,19 +19,21 @@
         pink = "#df588e";
         purple = "#312a59";
         dark-purple = "#282643";
-        slate = "#141321";
+        slate = "#141376";
         dark = "#111";
         light = "#eee";
       };
 
       "bar/root" = {
         width = "100%";
-        height = "30px";
+        height = "40px";
+        radius = 15;
         offset-y = "1%";
         background = "\${colors.transparent}";
         monitor = "\${env:MONITOR:DP-2}";
         tray-position = "none";
         override-redirect = true;
+        wm-restack = "i3";
         modules-left = "none";
       };
 
@@ -47,16 +49,10 @@
 
         offset-x = "0.5%";
         width = "6%";
-        height = "30px";
-        radius = 10;
 
         line-size = "3pt";
 
-        border-size = 1;
-        border-color = "\${colors.pink}";
-
-
-        background = "\${colors.slate}";
+        background = "\${colors.dark-purple}";
         foreground = "\${colors.light}";
 
         font-0 = "\${fonts.hack}";
@@ -75,17 +71,10 @@
 
         offset-x = "78.5%";
         width = "21%";
-        height = "30px";
-        radius = 10;
 
         line-size = "3pt";
 
-        border-size = 1;
-        border-color = "\${colors.pink}";
-
-        monitor = "\${env:MONITOR:DP-2}";
-
-        background = "\${colors.slate}";
+        background = "\${colors.dark-purple}";
         foreground = "\${colors.light}";
 
         padding-left = 1;
@@ -102,7 +91,6 @@
       "module/workspaces" = {
         type = "internal/i3";
         pin-workspaces = true;
-        strip-wsnumbers = true;
         index-sort = true;
 
         format = "<label-state> <label-mode>";
