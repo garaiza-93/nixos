@@ -9,7 +9,7 @@ in
     enable = true;
 
     keybindings = {
-      "Super" = "${menu}";
+      "Super" = "${appmenu}";
       "Alt + Enter" = "${terminal}";
     };
   };
