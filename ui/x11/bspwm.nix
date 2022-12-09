@@ -9,7 +9,7 @@ in
     alwaysResetDesktops = true;
 
     extraConfigEarly = ''
-      bspc config workspace_count 5
+      bspc monitor -d 1 2 3 4 5
 
       bspc config window_gap 10
 
@@ -30,7 +30,11 @@ in
 
     #rules = { };
 
-    #startupPrograms = { };
+    startupPrograms = [
+      "systemctl --user restart polybar.service"
+      "feh --bg-scale ${wallpapers}/eva01.png"
+      "kitty"
+    ];
 
     #extraConfig = '''';
 

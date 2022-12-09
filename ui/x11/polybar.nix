@@ -4,7 +4,6 @@
   services.polybar = {
     enable = true;
     package = pkgs.polybar.override {
-      i3Support = true;
       pulseSupport = true;
     };
 
@@ -33,7 +32,6 @@
         monitor = "\${env:MONITOR:DP-2}";
         tray-position = "none";
         override-redirect = true;
-        wm-restack = "i3";
         modules-left = "none";
       };
 
@@ -58,7 +56,6 @@
         font-0 = "\${fonts.hack}";
 
         tray-position = "none";
-        wm-restack = "i3";
 
         separator = "";
         module-margin = 1;
@@ -89,7 +86,7 @@
       };
 
       "module/workspaces" = {
-        type = "internal/i3";
+        type = "internal/bspwm";
         pin-workspaces = true;
         index-sort = true;
 

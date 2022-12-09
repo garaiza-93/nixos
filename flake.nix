@@ -4,21 +4,21 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    i3-master = {
-      url = "github:i3/i3";
-      flake = false;
-    };
+    #    i3-master = {
+    #      url = "github:i3/i3";
+    #      flake = false;
+    #    };
 
   };
 
-  outputs = { self, nixpkgs, home-manager, i3-master }:
+  outputs = { self, nixpkgs, home-manager }:
     let
       system = "x86_64-linux";
 
       overlays = [
-        (final: prev: {
-          i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
-        })
+        #        (final: prev: {
+        #          i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
+        #        })
       ];
 
     in
