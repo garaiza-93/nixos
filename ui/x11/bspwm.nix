@@ -26,14 +26,13 @@ in
       bspc config urgent_border_color     "#cc0000"
     '';
 
-    settings = { };
+    #settings = { };
 
-    rules = { };
+    #rules = { };
 
-    startupPrograms = { };
+    #startupPrograms = { };
 
-    extraConfig = ''
-    '';
+    #extraConfig = '''';
 
   };
 }
