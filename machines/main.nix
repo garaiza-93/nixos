@@ -28,6 +28,7 @@
   };
 
   services.blueman.enable = true;
+  security.pam.services.lightdm.enableGnomeKeyring = true;
 
   fileSystems = {
     "/" = {
