@@ -11,19 +11,13 @@ in
     extraConfigEarly = ''
       bspc monitor -d 1 2 3 4 5
 
-      bspc config window_gap 10
+      bspc config window_gap 25
 
-      bspc config focused_border_color "#f5f000"
-      bspc config normal_border_color "#ff00ff"
+      bspc config normal_border_color "#282643"
+      bspc config active_border_color "#312a59"
+      bspc config focused_border_color "#df588e"
 
-      bspc config automatic_scheme follow
-      bspc config initial_polarity second_child
-
-      bspc config active_border_color     "#ff9900"
-      bspc config focused_border_color    "#ff9900"
-      bspc config normal_border_color     "#888888"
-      bspc config presel_border_color     "#33cc33"
-      bspc config urgent_border_color     "#cc0000"
+      bspc config automatic_scheme spiral
     '';
 
     #settings = { };
@@ -33,7 +27,6 @@ in
     startupPrograms = [
       "systemctl --user restart polybar.service"
       "feh --bg-scale ${wallpapers}/eva01.png"
-      "kitty"
     ];
 
     #extraConfig = '''';
