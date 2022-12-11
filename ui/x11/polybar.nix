@@ -7,7 +7,7 @@
       pulseSupport = true;
     };
 
-    config = rec {
+    config = {
       "fonts" = {
         hack = "Hack Nerd Font:size=12;2";
       };
@@ -19,18 +19,20 @@
         purple = "#312a59";
         dark-purple = "#282643";
         slate = "#141376";
-        dark = "#111";
+        dark-opaque = "#a0111111";
         light = "#eee";
       };
 
       "bar/root" = {
         width = "100%";
-        height = "40px";
+        height = 40;
         radius = 15;
-        offset-y = "1%";
+        offset-y = 25;
+        font-0 = "\${fonts.hack}";
         background = "\${colors.transparent}";
         monitor = "\${env:MONITOR:DP-2}";
         tray-position = "none";
+        wm-restack = "bspwm";
         override-redirect = true;
         modules-left = "none";
       };
@@ -45,29 +47,24 @@
         enable-ipc = true;
         bottom = false;
 
-        offset-x = "0.5%";
-        width = "6%";
-
-        line-size = "3pt";
+        offset-x = 25;
+        width = 150;
 
         background = "\${colors.dark-purple}";
         foreground = "\${colors.light}";
 
-        font-0 = "\${fonts.hack}";
-
         tray-position = "none";
 
-        separator = "";
-        module-margin = 1;
         modules-left = "workspaces";
+        module-padding = 1;
       };
 
       "bar/top-right" = {
         "inherit" = "bar/root";
         bottom = false;
 
-        offset-x = "78.5%";
-        width = "21%";
+        offset-x = "1997.4";
+        width = 538;
 
         line-size = "3pt";
 
@@ -76,7 +73,6 @@
 
         padding-left = 1;
 
-        font-0 = "\${fonts.hack}";
         tray-position = "none";
 
         separator = "";
@@ -85,44 +81,46 @@
         modules-right = "wireless date";
       };
 
+      "bar/allinone" = {
+        wm-restack = "bspwm";
+
+        width = "100%";
+        height = 40;
+
+        background = "\${colors.dark-opaque}";
+        foreground = "\${colors.light}";
+
+        border-bottom-size = "2px";
+        border-color = "\${colors.pink}";
+
+        font-0 = "\${fonts.hack}";
+
+        tray-position = "center";
+
+        modules-left = "workspaces";
+        modules-right = "volume wireless date";
+      };
+
       "module/workspaces" = {
         type = "internal/bspwm";
-        pin-workspaces = true;
-        index-sort = true;
+        enable-click = true;
 
-        format = "<label-state> <label-mode>";
+        format = "<label-state> ";
 
-        #label-dimmed-underline = "\${colors.dark}";
+        label-focused = "%name%";
+        label-occupied = "%name%";
+        label-empty = "%name%";
+        label-urgent = "%name%";
 
-        label-mode = "%mode%";
-        #label-mode-background = "${colors.dark-purple}";
-        #label-mode-underline = "${colors.fav-purple}";
-        label-mode-padding = 1;
-        label-mode-font = 3;
-
-        label-focused = "%index%";
-        label-focused-background = "\${colors.pink}";
         label-focused-padding = 1;
-        label-focused-font = 3;
-
-        label-unfocused = "%index%";
-        label-unfocused-background = "\${colors.dark-purple}";
-        label-unfocused-foreground = "\${colors.dark-gray}";
-        label-unfocused-padding = 1;
-        label-unfocused-font = 3;
-
-        label-visible = "%index%";
-        #label-visible-background = "${colors.dark-purple}";
-        #label-visible-underline = "${colors.light-purple}";
-        label-visible-padding = 1;
-        label-visible-font = 3;
-
-        label-urgent = "%index%";
-        #label-urgent-background = "${colors.dark-red}";
-        #label-urgent-underline = "${colors.light-red}";
+        label-occupied-padding = 1;
+        label-empty-padding = 1;
         label-urgent-padding = 1;
-        label-urgent-font = 3;
 
+        label-focused-foreground = "\${colors.light}";
+        label-focused-background = "\${colors.pink}";
+
+        label-empty-foreground = "\${colors.dark-gray}";
       };
 
       "module/volume" = {
@@ -156,7 +154,7 @@
 
       "module/date" = {
         type = "internal/date";
-        format-background = "\${colors.dark-purple}";
+        #format-background = "\${colors.dark-purple}";
         date = "%d.%m.%y";
         time = "%H:%M:%S";
         label = " %date% | %time% ";
@@ -166,9 +164,11 @@
     script = ''
       #!/usr/bin/env sh
       killall polybar
-      polybar root &
-      polybar top-left &
-      polybar top-right &
+      polybar allinone &
     '';
+
+    #      polybar root &
+    #      polybar top-left &
+    #      polybar top-right &
   };
 }
