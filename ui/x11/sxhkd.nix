@@ -9,12 +9,18 @@ in
     enable = true;
 
     keybindings = {
-      "shift + Tab + e" = "${terminal}";
+      "alt + shift + {e,d}" = "{~/.config/bspwm/bspwmrc,pkill -USR1 -x sxhkd}";
 
+      "alt + shift + q" = "bspc node -c";
+
+      "@Print" = "flameshot gui";
+
+      "alt + Return" = "${terminal}";
       "@Super_L" = "${appmenu}";
 
       "alt + {_,shift +}{h,j,k,l}" = "bspc node --{focus,swap} {west,south,north,east}";
       "alt + {_,shift +}{1-5}" = "bspc {desktop -f,node -d} {1-5}";
+      "alt + f" = "bspc node -t \~fullscreen";
     };
   };
 }
