@@ -16,7 +16,7 @@
         transparent = "#00000000";
         dark-gray = "#aaa";
         pink = "#df588e";
-        purple = "#312a59";
+        purple = "#765898";
         dark-purple = "#282643";
         slate = "#141376";
         dark-opaque = "#a0111111";
@@ -91,7 +91,7 @@
         foreground = "\${colors.light}";
 
         border-bottom-size = "2px";
-        border-color = "\${colors.pink}";
+        border-color = "\${colors.purple}";
 
         font-0 = "\${fonts.hack}";
 
@@ -120,7 +120,7 @@
         label-urgent-padding = 1;
 
         label-focused-foreground = "\${colors.light}";
-        label-focused-background = "\${colors.pink}";
+        label-focused-background = "\${colors.purple}";
 
         label-empty-foreground = "\${colors.dark-gray}";
       };
