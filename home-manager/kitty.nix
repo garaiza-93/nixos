@@ -127,7 +127,7 @@
       tab_bar_margin_color none
       foreground #dddddd
       background #000000
-      background_opacity 1.0
+      background_opacity 0.6
       background_image none
       background_image_layout tiled
       background_image_linear no
