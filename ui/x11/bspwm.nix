@@ -13,7 +13,7 @@ in
 
       bspc config window_gap 25
 
-      bspc config normal_border_color "#282643"
+      bspc config normal_border_color "#765898"
       bspc config active_border_color "#312a59"
       bspc config focused_border_color "#df588e"
 
