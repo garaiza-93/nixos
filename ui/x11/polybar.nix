@@ -97,6 +97,8 @@
 
         tray-position = "center";
 
+        separator = "";
+        module-margin = 1;
         modules-left = "workspaces";
         modules-right = "volume wireless date";
       };
@@ -128,7 +130,7 @@
         format-muted = "<label-muted>";
         format-volume = "墳 <label-volume> <bar-volume>";
         label-volume = "%percentage%%";
-        label-muted = "%{F#e57373}%{F-} muted";
+        label-muted = "%{F#df588e}%{F-} muted";
 
         bar-volume-width = 8;
         bar-volume-empty = "%{T7}━%{T-}";
