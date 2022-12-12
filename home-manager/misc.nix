@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     ani-cli
+    betterdiscordctl
     discord
     firefox
     flameshot
