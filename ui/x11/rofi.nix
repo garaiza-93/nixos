@@ -2,7 +2,8 @@
 
 let
   # Tokyo Night baybeeee
-  background = "argb:CD1a1b26";
+  background = "argb:cd1a1b26";
+  background-solid = "#1a1b26";
   background-alt = "#24283b";
   foreground = "#c0caf5";
   blue_accent = "#7aa2f7";
@@ -20,46 +21,56 @@ in
 
     theme = {
       window = {
-        background-color = mkLiteral "${background}";
+        background-color = mkLiteral "transparent";
         border = 1;
         border-color = mkLiteral "${background-alt}";
-        width = 600;
 
-        children = mkLiteral "[ horibox ]";
-      };
-
-      horibox = {
-        background-color = mkLiteral "#FF0000";
         orientation = mkLiteral "horizontal";
-
-        children = mkLiteral "[ textbox, search ]";
+        children = mkLiteral "[ vertbox, searchbox ]";
       };
 
-      search = {
-        background-color = mkLiteral "#00FF00";
-        orientation = mkLiteral "vertical";
+      vertbox = {
+        background-color = mkLiteral "transparent";
 
-        children = mkLiteral "[ entry, listview ]";
+        orientation = mkLiteral "vertical";
+        children = mkLiteral "[ textbox ]";
       };
 
       textbox = {
-        background-color = mkLiteral "#0000FF";
-        color = mkLiteral "inherit";
+        background-color = mkLiteral "${background}";
+        color = mkLiteral "${foreground}";
+        border-color = mkLiteral "${blue_accent}";
+        border = 1;
+
+        padding = 5;
+        expand = true;
         markup = true;
         content = "<span size=\"large\"><b>hello world</b></span>\\ngoodbye world";
-
-        font = "Hack Nerd Font 12";
       };
 
+      searchbox = {
+        background-color = mkLiteral "${background-solid}";
+        color = mkLiteral "${foreground}";
+        border-color = mkLiteral "${blue_accent}";
+        border = mkLiteral "0 0 1px 0";
+
+        orientation = mkLiteral "vertical";
+        children = mkLiteral "[ entry, listview ]";
+      };
+
+
       entry = {
-        background-color = mkLiteral "#FFFF00";
-        color = mkLiteral "inherit";
+        background-color = mkLiteral "${background-alt}";
+        color = mkLiteral "${foreground}";
+        border-color = mkLiteral "${blue_accent}";
+        border = mkLiteral "0 0 1px 0";
 
         expand = false;
       };
 
       listview = {
-        background-color = mkLiteral "#FF00FF";
+        background-color = mkLiteral "${background-alt}";
+        color = mkLiteral "${foreground}";
       };
 
       element-text = {
