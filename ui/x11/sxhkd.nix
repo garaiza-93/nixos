@@ -1,7 +1,7 @@
 { self, pkgs, lib, ... }:
 
 let
-  appmenu = "rofi -show run";
+  appmenu = "rofi -show drun -display-drun ' '";
   terminal = "kitty";
 in
 {
