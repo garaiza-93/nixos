@@ -26,6 +26,7 @@ in
         border-color = mkLiteral "${background-alt}";
 
         orientation = mkLiteral "horizontal";
+        spacing = 0;
         children = mkLiteral "[ vertbox, searchbox ]";
       };
 
@@ -52,7 +53,7 @@ in
         background-color = mkLiteral "${background-solid}";
         color = mkLiteral "${foreground}";
         border-color = mkLiteral "${blue_accent}";
-        border = mkLiteral "0 0 1px 0";
+        border = 1;
 
         orientation = mkLiteral "vertical";
         children = mkLiteral "[ entry, listview ]";
