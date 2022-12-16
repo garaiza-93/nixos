@@ -11,6 +11,9 @@ in
     extraConfigEarly = ''
       bspc monitor -d 1 2 3 4 5
 
+      bspc config pointer_modifier mod1
+      bspconfig pointer_action1 move
+
       bspc config window_gap 25
 
       bspc config normal_border_color "#765898"
