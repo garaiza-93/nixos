@@ -1,7 +1,7 @@
 { self, pkgs, lib, ... }:
 
 let
-  wallpapers = ../../wallpapers;
+  wallpapers = ../../img;
 in
 {
   xsession.windowManager.bspwm = {
