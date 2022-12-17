@@ -20,6 +20,8 @@ Clone repo, `sudo nixos-rebuild switch --flake '.#[a profile in flake.nix]` and 
 ⣿⣿⣿⣿⣿⠟⠋⠄⠄⠄⠄⠄⠄⠈⠛⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠄⠄<br/>
 ⣿⠿⠛⠉⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠿⢿⣿⣿⣿⣿⣿⠿⠋⠄⠄⠄⠄<br/>
 
+
+![image](https://user-images.githubusercontent.com/57430880/208251966-5c5d0002-c3c7-412b-b115-c75b2cb3c14d.png)
 ## Features
 - Tokyo Night theme
   - Emphasis on the purple and pink of the theme. It's there, trust me.
