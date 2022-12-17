@@ -8,6 +8,8 @@
     desktopManager.xterm.enable = false;
     windowManager.bspwm.enable = true;
     displayManager.defaultSession = "none+bspwm";
+    libinput.enable = true;
+    libinput.mouse.accelProfile = "flat";
     config = ''
       Section "Screen"
         Identifier      "Screen0"
