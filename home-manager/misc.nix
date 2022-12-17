@@ -23,6 +23,7 @@
     nix-index
     openvpn
     peek
+    piper
     plocate
     prismlauncher-qt5
     protonup-ng
