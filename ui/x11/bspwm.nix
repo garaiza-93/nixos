@@ -25,7 +25,28 @@ in
 
     #settings = { };
 
-    #rules = { };
+    rules = {
+      "Steam" = {
+        desktop = "^3";
+        follow = true;
+      };
+      "PrismLauncher" = {
+        desktop = "^3";
+        state = "floating";
+        follow = true;
+      };
+      "Minecraft* 1.18.2" = {
+        desktop = "^4";
+        state = "fullscreen";
+        follow = false;
+      };
+      "FINAL FANTASY XIV" = {
+        desktop = "^4";
+        state = "fullscreen";
+        follow = true;
+        focus = true;
+      };
+    };
 
     startupPrograms = [
       "systemctl --user restart polybar.service"
