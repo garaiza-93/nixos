@@ -8,5 +8,6 @@
     ./polybar.nix
     ./rofi.nix
     ./picom.nix
+    ./betterlockscreen.nix
   ];
 }
