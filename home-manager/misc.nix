@@ -17,11 +17,14 @@
     grapejuice
     killall
     lightdm
+    lutris
     neofetch
     neovim
     networkmanager-openvpn
     nix-index
     openvpn
+    openrgb
+    pcsx2
     peek
     piper
     plocate
