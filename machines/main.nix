@@ -6,32 +6,32 @@
       (modulesPath + "/installer/scan/not-detected.nix")
       ../core/boot.nix
       ../core/sound.nix
-      ../fonts.nix
       ../core/drivers/nvidia.nix
+      ../core/security.nix
+      ../fonts.nix
       ../configuration.nix
     ];
 
+  system.stateVersion = "unstable";
+
   boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "usb_storage"
-        "usbhid"
-        "sd_mod"
-      ];
-      kernelModules = [ ];
-    };
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "ahci"
+      "usb_storage"
+      "usbhid"
+      "sd_mod"
+    ];
     kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
   };
 
-  services.blueman.enable = true;
-  services.ratbagd.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.lightdm.enableGnomeKeyring = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
   fileSystems = {
     "/" = {
@@ -52,8 +52,6 @@
     };
   };
 
-  swapDevices = [ ];
-
   xdg.portal = {
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     enable = true;
@@ -68,13 +66,10 @@
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     video.hidpi.enable = lib.mkDefault true;
-    xpadneo.enable = true;
-    bluetooth.enable = true;
   };
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
-  system.stateVersion = "unstable";
 
   environment = {
     shells = with pkgs; [ zsh ];
@@ -96,7 +91,7 @@
     users.goose = {
       isNormalUser = true;
       description = "goose";
-      extraGroups = [ "networkmanager" "wheel" "audio" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "mlocate" ];
     };
   };
 }

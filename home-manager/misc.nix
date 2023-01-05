@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     ani-cli
     betterdiscordctl
+    cura
     discord
     firefox
     flameshot
@@ -27,14 +28,11 @@
     lutris
     neofetch
     neovim
-    networkmanager-openvpn
     nix-index
-    openvpn
     openrgb
     pcsx2
     peek
     piper
-    plocate
     prismlauncher-qt5
     protonup-ng
     qbittorrent
