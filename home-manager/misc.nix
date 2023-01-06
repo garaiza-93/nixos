@@ -30,6 +30,7 @@
     neovim
     nix-index
     openrgb
+    pavucontrol
     pcsx2
     peek
     piper
@@ -37,6 +38,7 @@
     protonup-ng
     qbittorrent
     ripgrep
+    rofi-vpn
     thefuck
     timeshift
     unetbootin
