@@ -8,6 +8,9 @@
       ../core/sound.nix
       ../core/drivers/nvidia.nix
       ../core/security.nix
+      ../core/bluetooth.nix
+      ../core/gaming.nix
+      ../core/security.nix
       ../fonts.nix
       ../configuration.nix
     ];
@@ -60,8 +63,13 @@
   networking = {
     useDHCP = lib.mkDefault true;
     hostName = "EVA-01";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = [ pkgs.networkmanager-openvpn ];
+    };
   };
+
+  programs.nm-applet.enable = true;
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
