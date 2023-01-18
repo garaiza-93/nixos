@@ -37,10 +37,27 @@
         "type": "github"
       }
     },
+    "polybar-master": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672953068,
+        "narHash": "sha256-SlhOJhTvffwKRiqe4PUmdwARCm81JRJFUQ1ZQ3NHzR0=",
+        "owner": "polybar",
+        "repo": "polybar",
+        "rev": "fc423c092143464062f77b83f78328e8ca96694a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polybar",
+        "repo": "polybar",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "polybar-master": "polybar-master"
       }
     },
     "utils": {

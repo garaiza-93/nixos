@@ -4,23 +4,15 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    #    i3-master = {
-    #      url = "github:i3/i3";
-    #      flake = false;
-    #    };
-
+    polybar-master = {
+      url = "github:polybar/polybar";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, polybar-master }:
     let
       system = "x86_64-linux";
-
-      overlays = [
-        #        (final: prev: {
-        #          i3 = prev.i3.overrideAttrs (c: { src = i3-master; });
-        #        })
-      ];
-
     in
     {
       nixosConfigurations = {
@@ -32,9 +24,11 @@
             ./apps/apps.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit self polybar-master;
+              };
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];
               };
