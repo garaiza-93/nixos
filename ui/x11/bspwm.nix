@@ -52,6 +52,7 @@ in
       "systemctl --user restart polybar.service"
       "systemctl --user restart picom.service"
       "feh --bg-scale ${wallpapers}/eva01.png"
+      "flameshot"
     ];
 
     #extraConfig = '''';
