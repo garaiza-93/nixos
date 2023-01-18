@@ -1,11 +1,9 @@
-{ self, pkgs, config, ... }:
+{ self, pkgs, config, polybar-master, ... }:
 
 {
   services.polybar = {
     enable = true;
-    package = pkgs.polybar.override {
-      pulseSupport = true;
-    };
+    package = (pkgs.polybar.overrideAttrs (_: { src = polybar-master; })).override{ pulseSupport = true ;};
 
     config = {
       "fonts" = {
