@@ -3,7 +3,8 @@
 {
   services.polybar = {
     enable = true;
-    package = (pkgs.polybar.overrideAttrs (_: { src = polybar-master; })).override{ pulseSupport = true ;};
+    package = (pkgs.polybar.overrideAttrs (o: {src = polybar-master;}))
+      .override{ pulseSupport = true ;};
 
     config = {
       "fonts" = {
