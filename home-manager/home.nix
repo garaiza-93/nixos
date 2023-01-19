@@ -13,6 +13,7 @@
     ./git.nix
     ./kitty.nix
     ./misc.nix
+    ./neovim.nix
     ./rofi.nix
     ./tmux.nix
     ./zsh.nix

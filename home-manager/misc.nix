@@ -27,7 +27,6 @@
     lightdm
     lutris
     neofetch
-    neovim
     nix-index
     openrgb
     pavucontrol
