@@ -5,7 +5,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     polybar-master = {
-      url = "github:polybar/polybar";
+      type = "git";
+      url = "https://github.com/polybar/polybar.git";
+      submodules = true;
       flake = false;
     };
   };
