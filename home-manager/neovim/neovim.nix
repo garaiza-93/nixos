@@ -1,15 +1,20 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+with lib;
 {
   programs.neovim = {
     enable = true;
 
-    extraConfig = builtins.concatStringsSep "\n" [
-      ''
-      	lua << EOF
-	${lib.strings.fileContents config/init.lua}
-	EOF
-      ''
-    ]
+    plugins = with pkgs.vimPlugins; [
+      tokyonight-nvim
+    ];
+
+    extraConfig = ''
+      :luafile ~/.config/nvim/lua/init.lua
+    '';
+  };
+
+  xdg.configFile.nvim = {
+    source = ./config;
+    recursive = true;
   };
 }
