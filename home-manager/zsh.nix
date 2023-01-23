@@ -25,5 +25,8 @@ in
         { name = "spaceship-prompt/spaceship-prompt"; tags = [ use:spaceship.zsh from:github as:theme ]; }
       ];
     };
+    envExtra = ''
+      export TERM=xterm-256color
+    '';
   };
 }
