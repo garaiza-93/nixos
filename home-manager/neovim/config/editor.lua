@@ -12,3 +12,8 @@ require('indent_blankline').setup {
   buftype_exclude = { 'terminal' },
   filetype_exclude = { 'help', 'git', 'markdown', 'snippets', 'text', 'alpha', 'mason', 'packer' },
 }
+require('nvim-treesitter.configs').setup {
+  highlight = { enable = true },
+  indent = { true },
+  rainbow = { enable = true }
+}

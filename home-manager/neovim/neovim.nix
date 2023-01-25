@@ -14,7 +14,7 @@ with lib;
       nvim-autopairs
       nvim-surround
       nvim-ts-autotag
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
       nvim-tree-lua
       telescope-nvim
       plenary-nvim
@@ -43,6 +43,12 @@ with lib;
       cmp_luasnip
       luasnip
       friendly-snippets
+    ];
+    extraPackages = with pkgs; [
+      ripgrep
+      manix
+      nil
+      sumneko-lua-language-server
     ];
 
     extraConfig = ''
