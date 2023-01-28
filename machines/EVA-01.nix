@@ -63,6 +63,8 @@
     };
   };
 
+  services.ratbagd.enable = true;
+  hardware.xpadneo.enable = true;
   programs.nm-applet.enable = true;
 
   hardware = {
