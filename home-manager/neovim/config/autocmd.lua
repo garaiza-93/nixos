@@ -1,7 +1,6 @@
 local new_group = vim.api.nvim_create_augroup
 local new_cmd = vim.api.nvim_create_autocmd
 --Groups
-local packerGrp = new_group('packer', { clear = true })
 local lspGrp = new_group('lsp', { clear = true })
 
 local function conditionalFormat()
@@ -23,7 +22,7 @@ new_cmd(
 new_cmd(
   { 'CursorHold' },
   {
-    command = 'lua vim.diagnostic.open_float()',
+    command = 'lua vim.diagnostic.open_float({ focusable = false })',
     group = lspGrp
   }
 )
