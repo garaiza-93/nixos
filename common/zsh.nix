@@ -12,9 +12,9 @@ in
     shellAliases = {
       l = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
-      sysedit = "nvim ~/.config/nixpkgs";
-      nvimedit = "nvim ~/.config/nixpkgs/home-manager/neovim/config";
-      sysbuild = "cd ~/.config/nixpkgs && sudo nixos-rebuild switch --flake '.#main'";
+      sysedit = "nvim ~/.config/nixos";
+      nvimedit = "nvim ~/.config/nixos/devtools/neovim/config";
+      sysbuild = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake '.#main'";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
