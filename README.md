@@ -1,6 +1,11 @@
 # WOOOOOOOO LET'S GO NIIIIIIIX
 ## It's really not all that, just useful for reproducible machines.
-Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix] and you are good to go. For now it's my personal PC, so you might need to tweak stuff.
+Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix] and you are good to go.
+
+### Profiles
+- EVA-01: Personal computer. A Ryzen 5 1600, GTX 1080, and an extra hard drive and SSD.
+- wsl: A WSL environment I regularly use. Focused on development, I probably won't use anything graphical with it.
+
 
 ### Thanks, and have fun!
 
@@ -27,7 +32,7 @@ Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix] and yo
   - Emphasis on the purple and pink of the theme. It's there, trust me.
 - Picom with transparency and blur, Rofi launcher
 - Window gaps with BSPWM
-- Polybar
+- Polybar (built from source for the systray module!)
 - Uses home-manager for most applications
 - Zsh with spaceship prompt
 
@@ -37,8 +42,8 @@ Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix] and yo
   - First I need to know what handles how it looks (GTK?)
 - Assign specific applications to specific workspaces
 - Add on-click hooks to bar modules
-- I can factor out some applications to be handled directly by home-manager
-  - But is it worth it??
-- Organize apps into use-cases (games, productivity, etc.)
+- Research if Steam can be handled by home-manager
+  - Of course I could declare it as a package in home-manager, but I want the customization that `programs.steam` provides.
+  - Probably a personal project to contribute to the home-manager project.
 - Add GTK theme
 
