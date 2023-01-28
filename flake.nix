@@ -18,10 +18,10 @@
     in
     {
       nixosConfigurations = {
-        main = nixpkgs.lib.nixosSystem {
+        EVA-01 = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./machines/main.nix
+            ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
             ./apps/apps.nix
             home-manager.nixosModules.home-manager
@@ -33,6 +33,23 @@
               };
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];
+              };
+            }
+          ];
+        };
+        wsl = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./machines/wsl.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit self;
+              };
+              home-manager.users.gustavo = { ... }: {
+                imports = [ ./profiles/gustavo.nix ];
               };
             }
           ];
