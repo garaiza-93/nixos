@@ -14,7 +14,8 @@ in
       fucknvidia = "sudo nvidia-settings";
       sysedit = "nvim ~/.config/nixos";
       nvimedit = "nvim ~/.config/nixos/devtools/neovim/config";
-      sysbuild = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake '.#main'";
+      buildpersonal = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#EVA-01";
+      buildwork = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#wsl";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
