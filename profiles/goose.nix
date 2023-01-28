@@ -8,6 +8,5 @@
     ../ui/x11/ui.nix
     ../common/all.nix
     ../devtools/all.nix
-    ../gaming/gaming.nix
   ];
 }
