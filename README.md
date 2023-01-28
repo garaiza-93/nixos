@@ -1,6 +1,6 @@
 # WOOOOOOOO LET'S GO NIIIIIIIX
 ## It's really not all that, just useful for reproducible machines.
-Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix] and you are good to go.
+Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix]` and you are good to go.
 
 ### Profiles
 - EVA-01: Personal computer. A Ryzen 5 1600, GTX 1080, and an extra hard drive and SSD.
