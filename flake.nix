@@ -3,6 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl = "github:nix-community/NixOS-WSL";
 
     polybar-master = {
       type = "git";
@@ -12,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, polybar-master }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, polybar-master }:
     let
       system = "x86_64-linux";
     in
@@ -41,6 +42,7 @@
           inherit system;
           modules = [
             ./machines/wsl.nix
+            nixos-wsl.nixosModules.wsl
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
