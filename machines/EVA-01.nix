@@ -9,8 +9,6 @@
       ../core/drivers/nvidia.nix
       ../core/security.nix
       ../core/bluetooth.nix
-      ../core/gaming.nix
-      ../core/security.nix
       ../fonts.nix
       ../configuration.nix
     ];
