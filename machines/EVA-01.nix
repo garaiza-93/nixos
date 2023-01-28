@@ -4,11 +4,7 @@
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
-      ../core/boot.nix
-      ../core/sound.nix
-      ../core/drivers/nvidia.nix
-      ../core/security.nix
-      ../core/bluetooth.nix
+      ../core/all.nix
       ../fonts.nix
       ../configuration.nix
     ];

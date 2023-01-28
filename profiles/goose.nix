@@ -6,6 +6,8 @@
 
   imports = [
     ../ui/x11/ui.nix
-    ../home-manager/home.nix
+    ../common/all.nix
+    ../devtools/all.nix
+    ../gaming/gaming.nix
   ];
 }

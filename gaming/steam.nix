@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# not managed by home manager!
 {
   programs.steam = {
     enable = true;

@@ -5,6 +5,7 @@ let
 
 in
 {
+  home.sessionVariables."ZDOTDIR"= "\${HOME}/.config/zsh";
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
