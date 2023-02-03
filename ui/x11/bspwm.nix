@@ -26,6 +26,8 @@ in
     #settings = { };
 
     rules = {
+      "Firefox".desktop = "^1";
+      "Discord".desktop = "^2";
       "Steam" = {
         desktop = "^3";
         follow = true;
@@ -34,6 +36,11 @@ in
         desktop = "^3";
         state = "floating";
         follow = true;
+      };
+      "Minecraft* 1.7.10" = {
+        desktop = "^4";
+        state = "fullscreen";
+        follow = false;
       };
       "Minecraft* 1.18.2" = {
         desktop = "^4";
