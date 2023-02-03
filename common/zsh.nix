@@ -22,10 +22,6 @@ in
       size = 10000;
       path = "$HOME/.cache/zsh_history";
     };
-    zplug = {
-      enable = true;
-      plugins = [];
-    };
     envExtra = ''
       export TERM=xterm-256color
     '';
