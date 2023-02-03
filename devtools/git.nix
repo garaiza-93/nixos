@@ -17,7 +17,7 @@
       github.user = "garaiza-93";
       github.token = "token";
 
-      url."ssh://git@github.com/".insteadOf = "https://github.com";
+      url."ssh://git@github.com".insteadOf = "https://github.com";
     };
   };
 }
