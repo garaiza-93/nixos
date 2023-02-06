@@ -49,6 +49,9 @@ with lib;
       manix
       nil
       sumneko-lua-language-server
+      nodePackages.typescript
+      nodePackages.vscode-langservers-extracted
+      nodePackages.typescript-language-server
     ];
 
     extraConfig = ''
