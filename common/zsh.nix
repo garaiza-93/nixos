@@ -12,10 +12,11 @@ in
     shellAliases = {
       l = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
-      sysedit = "nvim ~/.config/nixos";
-      nvimedit = "nvim ~/.config/nixos/devtools/neovim/config";
+      sysedit = "nvim ~/.config/nixos/flake.nix";
+      nvimedit = "nvim ~/.config/nixos/devtools/neovim/config/neovim.nix";
       buildpersonal = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#EVA-01";
       buildwork = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#wsl";
+      updatepersonal = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
