@@ -56,7 +56,9 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1675351082,
@@ -73,22 +75,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1674868155,
-        "narHash": "sha256-eFNm2h6fNbgD7ZpO4MHikCB5pSnCJ7DTmwPisjetmwc=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ce20e9ebe1903ea2ba1ab006ec63093020c761cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-22.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1675763311,
         "narHash": "sha256-bz0Q2H3mxsF1CUfk26Sl9Uzi8/HFjGFD/moZHz1HebU=",
@@ -126,7 +112,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "polybar-master": "polybar-master"
       }
     },
