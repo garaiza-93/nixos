@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "flake-compa": {
+    "flake-compat": {
       "flake": false,
       "locked": {
         "lastModified": 1673956053,
