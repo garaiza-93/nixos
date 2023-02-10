@@ -9,6 +9,6 @@
         efiSysMountPoint = "/boot/efi";
       };
     };
-    kernelPackages = pkgs.linuxPackages_6_0;
+    kernelPackages = pkgs.linuxPackages_6_1;
   };
 }
