@@ -27,7 +27,7 @@ in
 
     rules = {
       "Firefox".desktop = "^1";
-      "Discord".desktop = "^2";
+      "discord".desktop = "^2";
       "Steam" = {
         desktop = "^3";
         follow = true;
@@ -37,7 +37,7 @@ in
         state = "floating";
         follow = true;
       };
-      "Minecraft* 1.7.10" = {
+      "Minecraft 1.7.10" = {
         desktop = "^4";
         state = "fullscreen";
         follow = false;
