@@ -23,6 +23,7 @@ with lib;
       indent-blankline-nvim
 
       #ui
+      glow-nvim
       trouble-nvim
       toggleterm-nvim
       bufferline-nvim
