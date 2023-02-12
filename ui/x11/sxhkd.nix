@@ -1,4 +1,4 @@
-{ self, pkgs, lib, ... }:
+{ ... }:
 
 let
   appmenu = "rofi -show drun";

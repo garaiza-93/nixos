@@ -1,4 +1,4 @@
-{ self, pkgs, config, polybar-master, ... }:
+{ pkgs, polybar-master, ... }:
 
 {
   services.polybar = {

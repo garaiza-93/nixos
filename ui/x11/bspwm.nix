@@ -1,4 +1,4 @@
-{ self, pkgs, lib, ... }:
+{ ... }:
 
 let
   wallpapers = ../../img;
@@ -26,6 +26,7 @@ in
     #settings = { };
 
     rules = {
+      "thunar".state = "floating";
       "Firefox".desktop = "^1";
       "discord".desktop = "^2";
       "Steam" = {
@@ -38,6 +39,11 @@ in
         follow = true;
       };
       "Minecraft 1.7.10" = {
+        desktop = "^4";
+        state = "fullscreen";
+        follow = false;
+      };
+      "GT: New Horizons" = {
         desktop = "^4";
         state = "fullscreen";
         follow = false;
