@@ -113,7 +113,24 @@
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
-        "polybar-master": "polybar-master"
+        "polybar-master": "polybar-master",
+        "tokyo-night-gtk": "tokyo-night-gtk"
+      }
+    },
+    "tokyo-night-gtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673979907,
+        "narHash": "sha256-90V55pRfgiaP1huhD+3456ziJ2EU24iNQHt5Ro+g+M0=",
+        "owner": "Fausto-Korpsvart",
+        "repo": "Tokyo-Night-GTK-Theme",
+        "rev": "f7ae3421ac0d415ca57fb6224e093e12b8a980bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fausto-Korpsvart",
+        "repo": "Tokyo-Night-GTK-Theme",
+        "type": "github"
       }
     },
     "utils": {

@@ -12,9 +12,14 @@
       submodules = true;
       flake = false;
     };
+
+    tokyo-night-gtk = {
+      url = "github:Fausto-Korpsvart/Tokyo-Night-GTK-Theme";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, polybar-master }:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, polybar-master, tokyo-night-gtk }:
     let
       system = "x86_64-linux";
     in
@@ -30,7 +35,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit polybar-master;
+                inherit polybar-master tokyo-night-gtk;
               };
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];

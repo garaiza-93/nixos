@@ -67,6 +67,7 @@
   services.ratbagd.enable = true;
   hardware.xpadneo.enable = true;
   programs.nm-applet.enable = true;
+  programs.dconf.enable = true;
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
