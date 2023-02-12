@@ -5,12 +5,14 @@
   home.packages = with pkgs; [
     firefox
     gparted
+    gvfs
     killall
     lightdm
     neofetch
     nix-index
     qbittorrent
     thefuck
+    xfce.thunar
     timeshift
     unetbootin
     unzip
