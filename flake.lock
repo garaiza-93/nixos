@@ -57,7 +57,7 @@
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-old"
         ]
       },
       "locked": {
@@ -90,6 +90,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-old": {
+      "locked": {
+        "lastModified": 1676253841,
+        "narHash": "sha256-jhuI8Mmky8VCD45OoJEuF6HdPLFBwNrHA0ljjZ/zkfw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a45a8916243a7d27acc358f4fc18c4491f3eeca8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "polybar-master": {
       "flake": false,
       "locked": {
@@ -113,6 +129,7 @@
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-old": "nixpkgs-old",
         "polybar-master": "polybar-master",
         "tokyo-night-gtk": "tokyo-night-gtk"
       }

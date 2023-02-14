@@ -1,10 +1,11 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
 
     polybar-master = {
       type = "git";
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, polybar-master, tokyo-night-gtk }:
+  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master, tokyo-night-gtk }:
     let
       system = "x86_64-linux";
     in
@@ -43,7 +44,7 @@
             }
           ];
         };
-        wsl = nixpkgs.lib.nixosSystem {
+        wsl = nixpkgs-old.lib.nixosSystem {
           inherit system;
           modules = [
             ./machines/wsl.nix
