@@ -8,6 +8,7 @@
     gvfs
     killall
     lightdm
+    lxappearance
     neofetch
     nix-index
     qbittorrent

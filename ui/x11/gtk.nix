@@ -4,7 +4,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark";
+      name = "Tokyonight-Dark-B";
       package = tokyo-night-gtk;
     };
   };
