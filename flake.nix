@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, polybar-master }:
+  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master }:
     let
       system = "x86_64-linux";
     in
