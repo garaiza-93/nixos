@@ -17,6 +17,7 @@ in
       buildpersonal = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#EVA-01";
       buildwork = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#wsl";
       updatepersonal = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01";
+      updatework = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
