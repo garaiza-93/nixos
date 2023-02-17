@@ -38,13 +38,9 @@ Clone repo, `sudo nixos-rebuild switch --flake .#[a profile in flake.nix]` and y
 
 
 ## Notes and To-Dos
-- Figure out how to get dropdown menus to look nicer
-  - First I need to know what handles how it looks (GTK?)
-- Assign specific applications to specific workspaces
 - Add on-click hooks to bar modules
 - Research if Steam can be handled by home-manager
   - Of course I could declare it as a package in home-manager, but I want the customization that `programs.steam` provides.
   - Probably a personal project to contribute to the home-manager project.
-- Add GTK theme
 - Set up SSH keys. Maybe upload public keys to be used to generate private keys? Probably unsecure/impossible.
 
