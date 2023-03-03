@@ -27,7 +27,7 @@
           modules = [
             ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
-            nixified-ai.nixosModules.nixified-ai
+            nixified-ai.nixosModules.invokeai-nvidia
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

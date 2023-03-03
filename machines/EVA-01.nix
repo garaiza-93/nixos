@@ -69,6 +69,9 @@
   programs.nm-applet.enable = true;
   programs.dconf.enable = true;
 
+  services.invokeai = {
+    enable = true;
+  };
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     video.hidpi.enable = lib.mkDefault true;
