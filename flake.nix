@@ -32,10 +32,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit polybar-master nixified-ai; 
+                inherit polybar-master; 
               };
               home-manager.users.goose = { ... }: {
-                imports = [ ./profiles/goose.nix ];
+                imports = [ ./profiles/goose.nix nixified-ai ];
               };
             }
           ];
