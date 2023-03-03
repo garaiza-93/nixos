@@ -7,7 +7,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
