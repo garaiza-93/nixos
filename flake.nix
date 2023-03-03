@@ -6,6 +6,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
+    nixified-ai.url = "github:nixified-ai/flake/nixos";
 
     polybar-master = {
       type = "git";
@@ -15,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master }:
+  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master, nixified-ai }:
     let
       system = "x86_64-linux";
     in
@@ -31,7 +32,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit polybar-master; 
+                inherit polybar-master nixified-ai; 
               };
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];
