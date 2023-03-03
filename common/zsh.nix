@@ -67,7 +67,7 @@ in
       directory.truncation_length = 3;
 
       cmd_duration = {
-        style = "#a9b1d6 bold";
+        style = "bold purple";
       };
     };
   };
