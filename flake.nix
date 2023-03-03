@@ -27,6 +27,7 @@
           modules = [
             ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
+            nixified-ai.nixosModules.nixified-ai
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -35,7 +36,7 @@
                 inherit polybar-master; 
               };
               home-manager.users.goose = { ... }: {
-                imports = [ ./profiles/goose.nix nixified-ai ];
+                imports = [ ./profiles/goose.nix ];
               };
             }
           ];
