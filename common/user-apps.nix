@@ -6,6 +6,7 @@
     betterdiscordctl
     cura
     discord
+    libreoffice
     lutris
     pcsx2
     piper
