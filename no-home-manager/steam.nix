@@ -10,8 +10,6 @@
 
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
-      withJava = true;
-      withPrimus = true;
       extraPkgs = pkgs: with pkgs; [
         libgdiplus
         glxinfo
