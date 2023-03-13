@@ -67,6 +67,7 @@
   services.ratbagd.enable = true;
   hardware.xpadneo.enable = true;
   programs.nm-applet.enable = true;
+  programs.java.enable = true;
   programs.dconf.enable = true;
 
   hardware = {

@@ -1,7 +1,0 @@
-{ ... }:
-
-{
-programs = {
-  java.enable = true;
-};
-}
