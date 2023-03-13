@@ -55,3 +55,17 @@ new_cmd(
     end,
   }
 )
+
+--Load project local settings (do NOT use "set exrc" due to RCE)
+new_cmd(
+  { 'VimEnter' },
+  {
+    desc = 'load project local settings',
+    callback = function()
+      local projectrc = vim.fn.findfile('.nvimrc.lua', '.;**/.git')
+      if projectrc ~= '' then
+        dofile(projectrc)
+      end
+    end
+  }
+)
