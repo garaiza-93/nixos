@@ -39,7 +39,7 @@ in
 
       nix_shell  = {
         symbol = "";
-        format = "[$symbol$name]($style) ";
+        format = "[$symbol]($style) ";
         style = "bright-purple bold";
       };
 
