@@ -6,6 +6,7 @@
     betterdiscordctl
     cura
     discord
+    hue-plus
     libreoffice
     lutris
     pcsx2
