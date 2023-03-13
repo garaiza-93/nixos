@@ -49,8 +49,10 @@ with lib;
       ripgrep
       manix
       nil
-      sumneko-lua-language-server
       nodePackages.typescript
+
+      # language servers
+      sumneko-lua-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.typescript-language-server
     ];
