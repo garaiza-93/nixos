@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 with lib;
 {
   programs.neovim = {
@@ -10,7 +10,6 @@ with lib;
       alpha-nvim
 
       #editor
-      lsp_signature-nvim
       nvim-autopairs
       nvim-surround
       nvim-ts-autotag
@@ -23,7 +22,6 @@ with lib;
       indent-blankline-nvim
 
       #ui
-      glow-nvim
       trouble-nvim
       toggleterm-nvim
       bufferline-nvim
@@ -44,17 +42,14 @@ with lib;
       cmp_luasnip
       luasnip
       friendly-snippets
+
+      #dap
+      nvim-dap
     ];
     extraPackages = with pkgs; [
       ripgrep
       manix
       nil
-      nodePackages.typescript
-
-      # language servers
-      sumneko-lua-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.typescript-language-server
     ];
 
     extraConfig = ''
@@ -65,6 +60,7 @@ with lib;
         ${ builtins.readFile ./config/globals.lua }
         ${ builtins.readFile ./config/keybinds.lua }
         ${ builtins.readFile ./config/lsp.lua }
+        ${ builtins.readFile ./config/dap.lua }
         ${ builtins.readFile ./config/options.lua }
         ${ builtins.readFile ./config/style.lua }
         ${ builtins.readFile ./config/ui.lua }
