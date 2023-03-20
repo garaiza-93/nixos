@@ -1,4 +1,3 @@
-require('lsp_signature').setup {}
 require('nvim-autopairs').setup {}
 require('nvim-surround').setup {}
 require('nvim-ts-autotag').setup {}
