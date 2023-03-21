@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   img = ../img;
@@ -14,10 +14,10 @@ in
       fucknvidia = "sudo nvidia-settings";
       sysedit = "cd ~/.config/nixos && nvim flake.nix";
       nvimedit = "cd ~/.config/nixos && nvim devtools/neovim/neovim.nix";
-      buildpersonal = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#EVA-01";
-      buildwork = "cd ~/.config/nixos && sudo nixos-rebuild switch --flake .#wsl";
-      updatepersonal = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01";
-      updatework = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl";
+      buildpersonal = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#EVA-01";
+      buildwork = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#wsl";
+      updatepersonal = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
+      updatework = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl && cd -";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
