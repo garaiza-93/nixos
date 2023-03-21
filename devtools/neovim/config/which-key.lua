@@ -20,9 +20,7 @@ local general = {
   c = {
     name = 'Code',
     d = { '<cmd>TroubleToggle<cr>', 'Toggle Diagnostics' },
-    f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format' },
     l = { '<cmd>set rnu!<cr>', 'Toggle Relative Line Numbers' },
-    r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Refactor' }
   },
   e = {
     name = 'Explore',
@@ -44,20 +42,16 @@ local general = {
     t = { '<cmd>lua vim.lsp.buf.type_defintion()<cr>', 'Type Defintion' },
     b = { '<cmd>pop<cr>', 'Previous Symbol' },
   },
-  r = { '<cmd>luafile ~/.config/nvim/init.lua<cr>', 'Refresh Settings' },
-  t = {
-    name = 'Tools',
+  l = {
+    name = 'LSP-based Actions',
     a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Actions' },
-    t = { '<cmd>FloatermNew --wintype=split --height=0.3 --position=botright<cr>', 'Terminal' },
+    c = { '<cmd>lua vim.lsp.buf.completion()<cr>', 'Show Completions' },
+    f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format' },
+    r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Refactor' },
+    i = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Show Hover' },
+    s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show Signature' },
+    w = { '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', 'Show All Symbols' },
   },
-  z = {
-    name = 'Folds',
-  }
+  t = { '<cmd>FloatermNew --wintype=split --height=0.3 --position=botright<cr>', 'Terminal' },
 }
 wk.register(general, { prefix = '<leader>' })
-
---local folding = {
---  R = { require('ufo').openAllFolds(), 'Open All Folds' },
---  M = { require('ufo').closeAllFolds(), 'Close All Folds' },
---}
-wk.register(folding, { prefix = 'z' })
