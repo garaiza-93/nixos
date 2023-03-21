@@ -50,6 +50,7 @@ with lib;
       ripgrep
       manix
       nil
+      sumneko-lua-language-server
     ];
 
     extraConfig = ''

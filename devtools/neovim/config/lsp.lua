@@ -1,6 +1,4 @@
-require('null-ls').setup()
-
-local servers = { 'nil_ls', 'eslint', 'tsserver' }
+local servers = { 'nil_ls' }
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
