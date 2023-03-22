@@ -49,7 +49,7 @@ with lib;
     extraPackages = with pkgs; [
       ripgrep
       manix
-      nil
+      rnix-lsp
       sumneko-lua-language-server
     ];
 
