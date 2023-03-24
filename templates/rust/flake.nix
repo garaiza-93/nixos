@@ -26,7 +26,7 @@
         rec
         {
           # Executed by `nix build`
-          packages.default = pkgs.buildRustPackage {
+          packages.default = pkgs.rustPlatform.buildRustPackage {
             inherit pname version;
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
