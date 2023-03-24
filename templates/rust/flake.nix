@@ -15,10 +15,10 @@
           pname = "name-me";
           version = "0.1.0";
 
-          nvimrc = ''local servers = { 'rust_analyzer' }
-            local caps = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities());
+          nvimrc = ''local servers = { "rust_analyzer" }
+            local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
             for _, lsp in ipairs(servers) do
-              require('lspconfig')[lsp].setup {capabilities = caps}
+              require("lspconfig")[lsp].setup {capabilities = caps}
             end
 
             vim.cmd("LspStart");'';
@@ -26,7 +26,7 @@
         rec
         {
           # Executed by `nix build`
-          packages.default = buildRustPackage {
+          packages.default = pkgs.buildRustPackage {
             inherit pname version;
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
@@ -41,14 +41,13 @@
             buildInputs = with pkgs; [
               cargo
               rustc
-              rust-src
               clippy
               rustfmt
               rust-analyzer
               pkg-config
             ];
 
-            RUST_SRC_PATH = "${toolchain.rust-src}/lib/rustlib/src/rust/library";
+            RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
             shellHook = ''echo '${nvimrc}' > .nvimrc.lua'';
           };
