@@ -1,33 +1,32 @@
 {
-  description = "Basic Cargo project with toolchain and language server";
+  description = "Basic Rust environment with toolchain and language server";
 
   inputs = {
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, fenix, ... }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
+          pkgs = nixpkgs.legacyPackages.${system};
+
           pname = "name-me";
           version = "0.1.0";
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [ fenix.overlays.default ];
-          };
-          toolchain = pkgs.fenix.complete;
+
+          nvimrc = ''local servers = { 'rust_analyzer' }
+            local caps = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities());
+            for _, lsp in ipairs(servers) do
+              require('lspconfig')[lsp].setup {capabilities = caps}
+            end
+
+            vim.cmd("LspStart");'';
         in
         rec
         {
           # Executed by `nix build`
-          packages.default = (pkgs.makeRustPlatform {
-            # Use nightly rustc and cargo provided by fenix for building
-            inherit (toolchain) cargo rustc;
-          }).buildRustPackage {
+          packages.default = buildRustPackage {
             inherit pname version;
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
@@ -40,18 +39,18 @@
           devShells.default = pkgs.mkShell {
 
             buildInputs = with pkgs; [
-              (with toolchain; [
-                cargo
-                rustc
-                rust-src
-                clippy
-                rustfmt
-                rust-analyzer
-              ])
+              cargo
+              rustc
+              rust-src
+              clippy
+              rustfmt
+              rust-analyzer
               pkg-config
             ];
 
             RUST_SRC_PATH = "${toolchain.rust-src}/lib/rustlib/src/rust/library";
+
+            shellHook = ''echo '${nvimrc}' > .nvimrc.lua'';
           };
         }
       );
