@@ -4,14 +4,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    yarn2nix = {
-      url = "github:nix-community/yarn2nix";
-      flake = false;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { nixpkgs, flake-utils, yarn2nix, ... }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -20,11 +15,11 @@
           pname = "name-me";
           version = "0.1.0";
 
-          nvimrc = ''local servers = { 'eslint', 'tsserver' }
-            local caps = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities());
+          nvimrc = ''local servers = { "eslint", "tsserver" }
+            local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
 
             for _, lsp in ipairs(servers) do
-              require('lspconfig')[lsp].setup { capabilities = caps }
+              require("lspconfig")[lsp].setup { capabilities = caps }
             end
 
             vim.cmd("LspStart");
@@ -33,7 +28,7 @@
         rec
         {
           # Executed by 'nix build'
-          packages.default = yarn2nix.mkYarnPackage {
+          packages.default = pkgs.mkYarnPackage {
             inherit pname;
             src = ./.;
             yarnLock = ./yarn.lock;
@@ -51,6 +46,7 @@
 
               nodePackages.typescript
               nodePackages.typescript-language-server
+              nodePackages.eslint
               nodePackages.vscode-langservers-extracted
             ];
 
