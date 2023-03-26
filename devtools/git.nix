@@ -5,10 +5,15 @@
     enable = true;
     userName = "Gustavo Araiza";
     userEmail = "57430880+garaiza-93@users.noreply.github.com";
+    aliases = {
+      fuckit = "push --force";
+      new = "checkout -b";
+      undo = "reset HEAD~1";
+    };
     extraConfig = {
       user.username = "garaiza-93";
       init.defaultBranch = "master";
-      
+
       core.editor = "nvim";
       core.whitespace = "fix,-indent-with-non-tab,tailing-space,cr-at-eol";
 
