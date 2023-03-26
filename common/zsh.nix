@@ -5,12 +5,16 @@ let
 
 in
 {
-  home.sessionVariables."ZDOTDIR"= "\${HOME}/.config/zsh";
+  home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
     shellAliases = {
-      l = "ls -lAth --color=auto";
+      ls = "ls --color=auto";
+      l = "ls -lh --color=auto";
+      L = "ls -lAh --color=auto";
+      ld = "ls -lth --color=auto";
+      Ld = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
       sysedit = "cd ~/.config/nixos && nvim flake.nix";
       nvimedit = "cd ~/.config/nixos && nvim devtools/neovim/neovim.nix";
@@ -37,7 +41,7 @@ in
       add_newline = true;
       format = "$nix_shell$username$hostname$directory$git_branch$git_state$git_status$cmd_duration";
 
-      nix_shell  = {
+      nix_shell = {
         symbol = "";
         format = "[$symbol]($style) ";
         style = "bright-purple bold";
@@ -50,14 +54,14 @@ in
         format = "[$user]($style)";
       };
 
-      hostname= {
+      hostname = {
         ssh_only = false;
         style = "#7aa2f7 bold";
         format = "[@$hostname$ssh_symbol ]($style)";
       };
       git_branch = {
         format = "[$symbol$branch ]($style)";
-        style = "#9ece6a bold"; 
+        style = "#9ece6a bold";
       };
 
       git_state.style = "#bb9af7";
