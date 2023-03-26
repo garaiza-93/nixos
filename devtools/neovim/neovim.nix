@@ -51,7 +51,8 @@ with lib;
       manix
       xclip
 
-      rnix-lsp
+      nil
+      nixfmt
       sumneko-lua-language-server
     ];
 
