@@ -5,7 +5,7 @@
     enable = true;
 
     font = {
-      name = "Hack Nerd Font Mono";
+      name = "Iosevka Comfy";
       size = 12;
     };
 
@@ -13,6 +13,7 @@
 
     settings = {
       background_opacity = "0.8";
+      enable_audio_bell = false;
     };
   };
 }
