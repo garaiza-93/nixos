@@ -39,6 +39,17 @@
           modules = [
             ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit polybar-master impermanence;
+              };
+              home-manager.users.goose = { ... }: {
+                imports = [ ./profiles/goose.nix ];
+              };
+            }
             impermanence.nixosModules.impermanence
             {
               environment.persistence."/nix/persist/system" = {
@@ -50,17 +61,7 @@
                   "/etc/passwd"
                 ];
               };
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit polybar-master impermanence;
-              };
-              home-manager.users.goose = { ... }: {
-                imports = [ ./profiles/goose.nix ];
-              };
+              environment.etc."machine-id".source = "/nix/etc/machine-id";
             }
           ];
         };
