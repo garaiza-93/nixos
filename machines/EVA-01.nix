@@ -24,6 +24,7 @@
     kernelModules = [ "kvm-amd" ];
   };
 
+  programs.fuse.userAllowOther = true;
 
   nix.gc = {
     automatic = true;
@@ -33,12 +34,23 @@
 
   fileSystems = {
     "/" = {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "size=3G" "mode=755" ];
+    };
+    "/nix" = {
       device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
       fsType = "ext4";
     };
     "/boot/efi" = {
       device = "/dev/disk/by-uuid/0162-22F2";
       fsType = "vfat";
+    };
+    "/home/goose" = {
+      #let impermanence take the wheel!!
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "size=4G" "mode=777" ];
     };
     "/home/hd1" = {
       device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";

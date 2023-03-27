@@ -2,10 +2,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
+
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
 
     polybar-master = {
       type = "git";
@@ -15,7 +20,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-old
+    , nixos-wsl
+    , home-manager
+    , impermanence
+    , polybar-master
+    }:
     let
       system = "x86_64-linux";
     in
@@ -26,12 +39,24 @@
           modules = [
             ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
+            impermanence.nixosModules.impermanence
+            {
+              environment.persistence."/nix/persist/system" = {
+                directories = [
+                  "/etc/NetworkManager/system-connections/"
+                  "/root"
+                ];
+                files = [
+                  "/etc/passwd"
+                ];
+              };
+            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit polybar-master; 
+                inherit polybar-master impermanence;
               };
               home-manager.users.goose = { ... }: {
                 imports = [ ./profiles/goose.nix ];
