@@ -38,19 +38,30 @@
       fsType = "tmpfs";
       options = [ "size=3G" "mode=755" ];
     };
+
+    "/persistent" = {
+      device = "dev/root";
+      neededForBoot = true;
+      fsType = "btfrs";
+      options = [ "subvol=persistent" ];
+    };
+
     "/nix" = {
-      device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
+      device = "/dev/root";
       fsType = "ext4";
+      neededForBoot = true;
     };
     "/boot/efi" = {
-      device = "/dev/disk/by-uuid/0162-22F2";
+      device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
       fsType = "vfat";
+      neededForBoot = true;
     };
+
     "/home/goose" = {
       #let impermanence take the wheel!!
       device = "none";
       fsType = "tmpfs";
-      options = [ "size=4G" "mode=777" ];
+      options = [ "mode=744" "user=goose" "group=wheel" ];
     };
     "/home/hd1" = {
       device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";
