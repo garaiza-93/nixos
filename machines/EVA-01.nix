@@ -36,37 +36,32 @@
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "size=3G" "mode=755" ];
+      options = [ "defaults" "size=2M" "mode=755" ];
     };
 
-    "/persistent" = {
-      device = "dev/root";
-      neededForBoot = true;
-      fsType = "btfrs";
-      options = [ "subvol=persistent" ];
+    "/boot" = {
+      device = "/dev/disk/by-uuid/498D-E09F";
+      fsType = "vfat";
     };
 
     "/nix" = {
-      device = "/dev/root";
+      device = "/dev/disk/by-uuid/1f28ad70-292b-4676-bf7f-54f01a0901cf";
       fsType = "ext4";
-      neededForBoot = true;
-    };
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
-      fsType = "vfat";
-      neededForBoot = true;
+      options = [ "defaults" "size=200G" "mode=755" ];
     };
 
     "/home/goose" = {
       #let impermanence take the wheel!!
       device = "none";
       fsType = "tmpfs";
-      options = [ "mode=744" "user=goose" "group=wheel" ];
+      # options = [ "mode=744" "user=goose" "group=wheel" ];
     };
+
     "/home/hd1" = {
       device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";
       fsType = "ext4";
     };
+
     "/home/ssd1" = {
       device = "/dev/disk/by-uuid/535f71b3-d1bb-4dce-9ab3-3cd91bf431fc";
       fsType = "ext4";
@@ -117,11 +112,8 @@
   };
 
   users = {
+    mutableUsers = false;
     defaultUserShell = pkgs.zsh;
-    users.goose = {
-      isNormalUser = true;
-      description = "goose";
-      extraGroups = [ "networkmanager" "wheel" "audio" "mlocate" ];
-    };
+    # your users here...
   };
 }
