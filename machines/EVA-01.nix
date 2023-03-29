@@ -32,12 +32,13 @@
   };
 
   fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/e9d29fb0-4b79-4f43-9652-9d9fe052c1aa";
+  "/" =
+    { device = "/dev/disk/by-uuid/0b3ff611-7c24-4943-8768-4a46da0afc32";
       fsType = "ext4";
     };
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/0162-22F2";
+
+  "/boot" =
+    { device = "/dev/disk/by-uuid/8DB2-8ACE";
       fsType = "vfat";
     };
     "/home/hd1" = {
