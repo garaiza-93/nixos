@@ -1,5 +1,5 @@
 {
-  home.persistence."/persist/home/goose" = {
+  home.persistence."/nix/persist/home/goose" = {
     allowOther = true;
     directories = [
       ".config/nix"

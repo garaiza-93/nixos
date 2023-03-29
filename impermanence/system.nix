@@ -1,5 +1,5 @@
 {
-  environment.persistence."/persist/system" = {
+  environment.persistence."/nix/persist/system" = {
     directories = [
       "/etc/NetworkManager/system-connections/"
       "/root"
