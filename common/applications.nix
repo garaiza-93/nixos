@@ -3,6 +3,7 @@
 {
   home.sessionVariables."BROWSER" = "firefox";
   home.packages = with pkgs; [
+    borgbackup
     firefox
     gparted
     gvfs
@@ -14,7 +15,6 @@
     qbittorrent
     thefuck
     xfce.thunar
-    timeshift
     unetbootin
     unzip
     wget
