@@ -3,13 +3,17 @@
 
   outputs = { ... }: {
     templates = {
+      dotnet = {
+        path = ./dotnet;
+        description = "Basic dotnet dev environment";
+      };
       nodets = {
         path = ./nodets;
-        description = "Node create-react-app in Typescript.";
+        description = "Build/run/develop node + typescript project";
       };
       rust = {
         path = ./rust;
-        description = "Cargo project for quick Rust setup.";
+        description = "Build/run/develop rust project";
       };
     };
   };
