@@ -12,7 +12,7 @@
     lxappearance
     neofetch
     nix-index
-    qbittorrent
+    transmission-gtk
     thefuck
     xfce.thunar
     unetbootin

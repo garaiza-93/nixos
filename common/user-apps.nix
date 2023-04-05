@@ -13,7 +13,7 @@
     piper
     prismlauncher-qt5
     protonup-ng
-    wine
+    wineWowPackages.full
     winetricks
   ];
 }
