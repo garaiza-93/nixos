@@ -15,6 +15,7 @@
       "file:///home/goose/Pictures"
       "file:///home/goose/Videos"
       "file:///home/goose/Torrents"
+      "file:///home/hd1/Torrents"
     ];
   };
 }
