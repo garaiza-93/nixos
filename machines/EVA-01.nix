@@ -68,13 +68,11 @@
   services.ratbagd.enable = true;
   hardware.xpadneo.enable = true;
   programs.nm-applet.enable = true;
+  programs.zsh.enable = true;
   programs.java.enable = true;
   programs.dconf.enable = true;
 
-  hardware = {
-    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    video.hidpi.enable = lib.mkDefault true;
-  };
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
@@ -99,7 +97,7 @@
     users.goose = {
       isNormalUser = true;
       description = "goose";
-      extraGroups = [ "networkmanager" "wheel" "audio" "mlocate" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "mlocate" "libvirtd" ];
     };
   };
 }
