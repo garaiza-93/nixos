@@ -7,5 +7,6 @@
     ./boot.nix
     ./security.nix
     ./sound.nix
+    ./virtualization.nix
   ];
 }
