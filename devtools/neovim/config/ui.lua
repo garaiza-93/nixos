@@ -1,7 +1,8 @@
+require('toggleterm').setup {}
 local Terminal = require('toggleterm.terminal').Terminal
 
 function Lazygit_term()
-  Terminal:new({ cmd = 'lazygit', direction = 'float' });
+  Terminal:new({ cmd = 'lazygit', direction = 'float' }):toggle();
 end
 
 require('bufferline').setup {
