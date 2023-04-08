@@ -50,6 +50,8 @@ with lib;
       ripgrep
       manix
       xclip
+      lazygit
+      gh
 
       nil
       nixfmt

@@ -52,6 +52,6 @@ local general = {
     s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show Signature' },
     w = { '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', 'Show All Symbols' },
   },
-  t = { '<cmd>FloatermNew --wintype=split --height=0.3 --position=botright<cr>', 'Terminal' },
+  t = { '<cmd>lua Lazygit_term()<cr>', 'Terminal' },
 }
 wk.register(general, { prefix = '<leader>' })

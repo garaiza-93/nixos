@@ -1,5 +1,9 @@
-require('trouble').setup {}
-require('toggleterm').setup {}
+local Terminal = require('toggleterm.terminal').Terminal
+
+function Lazygit_term()
+  Terminal:new({ cmd = 'lazygit', direction = 'float' });
+end
+
 require('bufferline').setup {
   options = {
     mode = 'tabs',
@@ -29,8 +33,8 @@ require('lualine').setup {
     globalstatus = true,
     disabled_filetypes = { 'alpha' },
     ignore_focus = {},
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
   },
   sections = {
     lualine_a = { 'mode' },
@@ -40,8 +44,8 @@ require('lualine').setup {
         'buffers',
         hide_filename_extension = true,
         symbols = {
-        alternate_file = '',
-      },
+          alternate_file = '',
+        },
         mode = 4,
       },
     },
@@ -50,3 +54,5 @@ require('lualine').setup {
     lualine_z = { 'location' }
   }
 }
+
+require('trouble').setup {}
