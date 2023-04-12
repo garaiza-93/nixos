@@ -7,7 +7,6 @@
       ../core/all.nix
       ../fonts.nix
       ../configuration.nix
-      ../no-home-manager/steam.nix
     ];
 
   system.stateVersion = "unstable";

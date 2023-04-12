@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  home.sessionVariables."STEAM_EXTRA_COMPAT_TOOLS_PATHS" = "\${HOME}/.steam/root/compatibilitytools.d";
   home.packages = with pkgs; [
     ani-cli
     betterdiscordctl
@@ -9,10 +8,7 @@
     hue-plus
     libreoffice
     lutris
-    pcsx2
     piper
-    prismlauncher-qt5
-    protonup-ng
     wineWowPackages.full
     winetricks
   ];
