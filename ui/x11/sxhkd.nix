@@ -23,10 +23,10 @@ in
       "alt + f" = "bspc node -t \~fullscreen";
       "alt + d" = "bspc node -t ~floating";
 
-      "XF86AudioRaiseVolume" = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
-      "XF86AudioLowerVolume" = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
-      "XF86AudioMute" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-      "XF86AudioMicMute" = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+      "XF86AudioRaiseVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05+";
+      "XF86AudioLowerVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05-";
+      "XF86AudioMute" = "wpctl set-mute @DEFAULT_SINK@ toggle";
+      "XF86AudioMicMute" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
     };
   };
 }
