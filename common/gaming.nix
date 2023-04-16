@@ -7,7 +7,6 @@
     protontricks
     protonup-ng
     steam
-    steamtinkerlaunch
-    steamtinkerlaunch
+    steam-run
   ];
 }
