@@ -1,9 +1,8 @@
-{ self, pkgs, ... }:
+{ ... }:
 
 {
-  hardware.pulseaudio = {
+  services.pipewire = {
     enable = true;
-    support32Bit = true;
-    extraConfig = "load-module module-combine-sink";
+    pulse.enable = true;
   };
 }
