@@ -41,14 +41,14 @@
               omnisharp-roslyn
             ];
 
-            DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+            DOTNET_ROOT = "\${XDG_DATA_HOME}/dotnet";
             DOTNET_CLI_TELEMETRY_OPTOUT = 1;
-            DOTNET_SKIP_FIRST_TIME_EXPERIENCE = "false";
+            DOTNET_SKIP_FIRST_TIME_EXPERIENCE = "true";
 
             shellHook = ''
               echo '${nvimrc}' > .nvimrc.lua
-              export NUGET_PACKAGES=$HOME/.cache/nuget
-              export OMNISHARPHOME=$HOME/.config/omnisharp
+              export NUGET_PACKAGES=$XDG_DATA_HOME/nuget
+              export OMNISHARPHOME=$XDG_CONFIG_HOME/omnisharp
             '';
           };
         }
