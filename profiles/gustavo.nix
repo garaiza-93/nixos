@@ -8,6 +8,7 @@
    ../devtools/neovim/neovim.nix
    ../devtools/git.nix
    ../devtools/tmux.nix
+   ../devtools/misc.nix
    ../common/btop.nix
    ../common/zsh.nix
   ];
