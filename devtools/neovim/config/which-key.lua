@@ -19,39 +19,62 @@ wk.setup {
 local general = {
   c = {
     name = 'Code',
-    d = { '<cmd>TroubleToggle<cr>', 'Toggle Diagnostics' },
+    I = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Info' },
+    S = { '<cmd>Telescope lsp_document_symbols<cr>', 'Symbols' },
+    a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Actions' },
+    c = { '<cmd>lua vim.lsp.buf.completion()<cr>', 'Completions' },
+    d = { '<cmd>TroubleToggle<cr>', 'Diagnostics' },
+    f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format' },
+    i = { '<cmd>Telescope lsp_incoming_calls<cr>', 'Incoming Calls' },
     l = { '<cmd>set rnu!<cr>', 'Toggle Relative Line Numbers' },
+    o = { '<cmd>Telescope lsp_outgoing_calls<cr>', 'Outgoing Calls' },
+    r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Refactor' },
+    s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Signature' }
   },
-  e = {
-    name = 'Explore',
-    f = { '<cmd>NvimTreeToggle<cr>', 'File Tree' },
-    s = { '<cmd>Alpha<cr>', 'Start' }
-  },
+  e = { '<cmd>NvimTreeToggle<cr>', 'File Explorer' },
   f = {
     name = 'Find with Telescope',
     b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
     f = { '<cmd>Telescope find_files<cr>', 'By Filename' },
     g = { '<cmd>Telescope live_grep<cr>', 'By Grep' },
+    r = { '<cmd>Telescope oldfiles<cr>', 'Recent' }
   },
   g = {
     name = 'Go to',
-    d = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Definition' },
     D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Declaration' },
-    i = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Implementation' },
-    r = { '<cmd>lua vim.lsp.buf.references()<cr>', 'References' },
-    t = { '<cmd>lua vim.lsp.buf.type_defintion()<cr>', 'Type Defintion' },
     b = { '<cmd>pop<cr>', 'Previous Symbol' },
+    d = { '<cmd>Telescope lsp_definitions<cr>', 'Definition' },
+    i = { '<cmd>Telescope lsp_implementations<cr>', 'Implementation' },
+    r = { '<cmd>Telescope lsp_references<cr>', 'References' },
+    t = { '<cmd>Telescope lsp_type_defintions<cr>', 'Type Defintion' }
   },
-  l = {
-    name = 'LSP-based Actions',
-    a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Actions' },
-    c = { '<cmd>lua vim.lsp.buf.completion()<cr>', 'Show Completions' },
-    f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format' },
-    r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Refactor' },
-    i = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Show Hover' },
-    s = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', 'Show Signature' },
-    w = { '<cmd>lua vim.lsp.buf.workspace_symbol()<cr>', 'Show All Symbols' },
+  s = {
+    name = 'Splits',
+    e = { '<C-w>=', 'Equalize' },
+    h = { '<C-w><', 'Resize Left' },
+    j = { '<C-w>-', 'Resize Down' },
+    k = { '<C-w>+', 'Resize Up' },
+    l = { '<C-w>>', 'Resize Right' }
   },
-  t = { '<cmd>lua Lazygit_term()<cr>', 'Terminal' },
+  t = {
+    name = 'Tabs',
+    N = { '<cmd>tabnew<cr>', 'New Tab' },
+    c = { '<cmd>tabc<cr>', 'Close Tab' },
+    n = { '<cmd>tabn<cr>', 'Next Tab' },
+    p = { '<cmd>tabp<cr>', 'Previous Tab' }
+  },
+  T = { '<cmd>lua Lazygit_term()<cr>', 'Terminal' },
+  w = {
+    name = 'Windows',
+    H = { '<C-w>H', 'Move Left' },
+    J = { '<C-w>J', 'Move Down' },
+    K = { '<C-w>K', 'Move Up' },
+    L = { '<C-w>L', 'Move Right' },
+    T = { '<C-w>T', 'Move to New Tab' },
+    h = { '<C-w>h', 'Select Left' },
+    j = { '<C-w>j', 'Select Down' },
+    k = { '<C-w>k', 'Select Up' },
+    l = { '<C-w>l', 'Select Right' }
+  },
 }
 wk.register(general, { prefix = '<leader>' })
