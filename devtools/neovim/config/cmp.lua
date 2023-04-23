@@ -1,12 +1,15 @@
 -- Set up nvim-cmp.
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-vim.g.completeopt = 'menu, menuone, noselect, noinsert'
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
+  completion = {
+    completeopt = "menu,menuone,noinsert",
+  },
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -14,31 +17,25 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        local entry = cmp.get_selected_entry()
-        if not entry then
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-          end
-        else
-          cmp.confirm()
-        end
-      else
-        fallback()
-      end
-    end, { 'i', 's', 'c', }),
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-  })
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
+  }),
+  experimental = {
+    ghost_text = {
+      hl_group = "LspCodeLens",
+    },
+  },
 })
 
 cmp.setup.filetype('gitcommit', {
