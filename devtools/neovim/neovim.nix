@@ -18,7 +18,6 @@ with lib;
       telescope-nvim
       plenary-nvim
       nvim-web-devicons
-      telescope-file-browser-nvim
       indent-blankline-nvim
 
       #ui

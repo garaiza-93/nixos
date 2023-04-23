@@ -5,11 +5,10 @@ require('nvim-tree').setup {
   update_focused_file = { enable = true },
   prefer_startup_root = true,
   view = {
-    adaptive_size = true;
+    adaptive_size = true,
   }
 }
 require('telescope').setup {}
-require('telescope').load_extension 'file_browser'
 require('indent_blankline').setup {
   char = '▏',
   show_end_of_line = false,
