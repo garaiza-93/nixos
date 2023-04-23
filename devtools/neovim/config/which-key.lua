@@ -17,6 +17,16 @@ wk.setup {
 }
 
 local general = {
+  b = {
+    name = 'Buffers',
+    D = { '<cmd>%bd|e#<cr>', 'Delete All But Current' },
+    d = { '<cmd>bd<cr>', 'Delete Current' },
+    l = { '<cmd>Telescope buffers<cr>', 'List All' },
+    n = { '<cmd>bn<cr>', 'Next' },
+    p = { '<cmd>bp<cr>', 'Previous' },
+    s = { '<cmd>sp<cr>', 'Split' },
+    v = { '<cmd>vsp<cr>', 'Vertical Split' }
+  },
   c = {
     name = 'Code',
     I = { '<cmd>lua vim.lsp.buf.hover()<cr>', 'Info' },
@@ -33,8 +43,7 @@ local general = {
   },
   e = { '<cmd>NvimTreeToggle<cr>', 'File Explorer' },
   f = {
-    name = 'Find with Telescope',
-    b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
+    name = 'Find',
     f = { '<cmd>Telescope find_files<cr>', 'By Filename' },
     g = { '<cmd>Telescope live_grep<cr>', 'By Grep' },
     r = { '<cmd>Telescope oldfiles<cr>', 'Recent' }
@@ -66,11 +75,13 @@ local general = {
   T = { '<cmd>lua Lazygit_term()<cr>', 'Terminal' },
   w = {
     name = 'Windows',
+    C = { '<cmd>on<cr>', 'Close Others' },
     H = { '<C-w>H', 'Move Left' },
     J = { '<C-w>J', 'Move Down' },
     K = { '<C-w>K', 'Move Up' },
     L = { '<C-w>L', 'Move Right' },
     T = { '<C-w>T', 'Move to New Tab' },
+    c = { '<cmd>hid<cr>', 'Close Current' },
     h = { '<C-w>h', 'Select Left' },
     j = { '<C-w>j', 'Select Down' },
     k = { '<C-w>k', 'Select Up' },
