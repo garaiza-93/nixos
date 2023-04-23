@@ -22,6 +22,7 @@ in
       "alt + {_,shift +}{1-5}" = "bspc {desktop -f,node -d} {1-5}";
       "alt + f" = "bspc node -t \~fullscreen";
       "alt + d" = "bspc node -t ~floating";
+      "alt + r" = "bspc node @parent -R 90";
 
       "XF86AudioRaiseVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05+";
       "XF86AudioLowerVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05-";
