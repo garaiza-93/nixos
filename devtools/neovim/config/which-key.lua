@@ -72,7 +72,11 @@ local general = {
     n = { '<cmd>tabn<cr>', 'Next Tab' },
     p = { '<cmd>tabp<cr>', 'Previous Tab' }
   },
-  T = { '<cmd>lua Lazygit_term()<cr>', 'Terminal' },
+  T = {
+    name = 'Terminals',
+    l = { '<cmd>lua Lazygit_term()<cr>', 'Lazygit' },
+    t = { '<cmd>ToggleTerm<cr>', 'Toggle Terminal' }
+  },
   w = {
     name = 'Windows',
     C = { '<cmd>on<cr>', 'Close Others' },

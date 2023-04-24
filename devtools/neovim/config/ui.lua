@@ -1,4 +1,9 @@
-require('toggleterm').setup {}
+require('toggleterm').setup {
+  direction = 'float',
+  float_opts = {
+    border = 'curved'
+  }
+}
 local Terminal = require('toggleterm.terminal').Terminal
 
 function Lazygit_term()
