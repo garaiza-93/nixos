@@ -15,14 +15,43 @@
           pname = "name-me";
           version = "0.1.0";
 
-          nvimrc = ''local servers = { "eslint", "tsserver" }
+          nvimrc = ''
+            local lsp_formatting = function(bufnr)
+                vim.lsp.buf.format({
+                    filter = function(client)
+                        return client.name == "null-ls"
+                    end,
+                    bufnr = bufnr,
+                })
+            end
+
+            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+            local on_attach = function(client, bufnr)
+                if client.supports_method("textDocument/formatting") then
+                    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = augroup,
+                        buffer = bufnr,
+                        callback = function()
+                            lsp_formatting(bufnr)
+                        end,
+                    })
+                end
+            end
+
+            local servers = { "eslint", "tsserver" }
             local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
 
             for _, lsp in ipairs(servers) do
-              require("lspconfig")[lsp].setup { capabilities = caps }
+              require("lspconfig")[lsp].setup { capabilities = caps, on_attach = on_attach }
             end
 
             vim.cmd("LspStart");
+
+            local null_ls = require("null-ls");
+            local sources = { null_ls.builtins.formatting.prettier };
+            null_ls.setup({sources = sources})
             '';
         in
         rec
@@ -47,10 +76,13 @@
               nodePackages.typescript
               nodePackages.typescript-language-server
               nodePackages.eslint
+              nodePackages.prettier
               nodePackages.vscode-langservers-extracted
             ];
 
-            shellHook = ''echo '${nvimrc}' > .nvimrc.lua'';
+            shellHook = ''
+              echo '${nvimrc}' > .nvimrc.lua
+            '';
           };
         }
       );
