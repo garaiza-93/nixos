@@ -7,6 +7,7 @@
       ../core/all.nix
       ../fonts.nix
       ../configuration.nix
+      ../core/samba.nix
     ];
 
   system.stateVersion = "unstable";
@@ -22,7 +23,6 @@
     ];
     kernelModules = [ "kvm-amd" ];
   };
-
 
   nix.gc = {
     automatic = true;
@@ -62,6 +62,8 @@
       enable = true;
       plugins = [ pkgs.networkmanager-openvpn ];
     };
+    firewall.enable = true;
+    firewall.allowPing = true;
   };
 
   services.ratbagd.enable = true;

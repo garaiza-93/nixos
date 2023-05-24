@@ -2,7 +2,6 @@
 
 let
   img = ../img;
-
 in
 {
   home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
@@ -28,8 +27,19 @@ in
       size = 10000;
       path = "$HOME/.cache/zsh_history";
     };
+    initExtra = ''
+      autoload -U add-zsh-hook
+      load-local-conf() {
+           # check file exists, is regular file and is readable:
+           if [[ -f .aliases && -r .aliases && IN_NIX_SHELL ]]; then
+             source .aliases
+           fi
+      }
+      add-zsh-hook chpwd load-local-conf
+    '';
     envExtra = ''
       export TERM=xterm-256color
+      eval "$(direnv hook zsh)"
     '';
   };
 

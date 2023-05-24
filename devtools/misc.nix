@@ -2,7 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    dotnet-sdk
     google-cloud-sdk
   ];
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }
