@@ -1,5 +1,10 @@
 rules:
   - name: move dotnet runtime
     target: ~/.dotnet
-    rewrite: ./.dotnet
+    rewrite: ./.data/dotnet
+    mode: directory
+
+  - name: move nuget
+    target: ~/.nuget
+    rewrite: ./.data/nuget
     mode: directory
