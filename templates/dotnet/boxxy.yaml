@@ -1,0 +1,5 @@
+rules:
+  - name: move dotnet runtime
+    target: ~/.dotnet
+    rewrite: ./.dotnet
+    mode: directory
