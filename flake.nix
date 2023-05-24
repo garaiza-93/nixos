@@ -4,6 +4,8 @@
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager-old.url = "github:nix-community/home-manager/release-22.11";
+    home-manager-old.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
 
@@ -15,7 +17,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, polybar-master }:
+  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager, home-manager-old, polybar-master }:
     let
       system = "x86_64-linux";
     in
@@ -44,7 +46,7 @@
           modules = [
             ./machines/wsl.nix
             nixos-wsl.nixosModules.wsl
-            home-manager.nixosModules.home-manager
+            home-manager-old.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
