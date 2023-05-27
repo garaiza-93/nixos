@@ -30,6 +30,11 @@
     options = "--delete-older-than 7d";
   };
 
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   fileSystems = {
   "/" =
     { device = "/dev/disk/by-uuid/0b3ff611-7c24-4943-8768-4a46da0afc32";
