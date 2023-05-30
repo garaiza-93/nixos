@@ -3,14 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
+    mission-control.url = "github:Platonic-Systems/mission-control";
   };
 
-  outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
+  outputs = inputs@{ self, nixpkgs, flake-parts, ...}:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [
+        inputs.flake-root.flakeModule
+        inputs.mission-control.flakeModule
+      ];
+      perSystem = { pkgs, lib, config, ... }:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
           omnisharp = pkgs.omnisharp-roslyn;
 
           nvimrc = ''
@@ -25,13 +31,17 @@
         in
         {
           # Executed by 'nix build'
-
+            #empty...
           # Used by `nix develop`
+          mission-control.scripts = {
+            dnbuild = {
+              description = "dotnet build";
+              exec = "${pkgs.boxxy}/bin/boxxy -d dotnet build";
+            };
+          };
           devShells.default = pkgs.mkShell {
+            inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
-              #BECAUSE MICROSOFT BAD (uses bind mounts to declutter $HOME)
-              boxxy
-
               #basics
               dotnet-sdk_7
               dotnet-runtime
@@ -54,6 +64,6 @@
               echo '${nvimrc}' > .nvimrc.lua
             '';
           };
-        }
-      );
+        };
+      };
 }
