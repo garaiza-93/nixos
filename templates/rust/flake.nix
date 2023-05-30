@@ -4,24 +4,32 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
+    mission-control.url = "github:Platonic-Systems/mission-control";
   };
 
-  outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-parts, ...}:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [
+        inputs.flake-root.flakeModule
+        inputs.mission-control.flakeModule
+      ];
+      perSystem = { pkgs, lib, config, ... }:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
-
           pname = "name-me";
           version = "0.1.0";
 
-          nvimrc = ''local servers = { "rust_analyzer" }
+          nvimrc = ''
+            local servers = { "rust_analyzer" }
             local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
             for _, lsp in ipairs(servers) do
               require("lspconfig")[lsp].setup {capabilities = caps}
             end
 
-            vim.cmd("LspStart");'';
+            vim.cmd("LspStart");
+          '';
         in
         rec
         {
@@ -36,8 +44,14 @@
           apps.default = flake-utils.lib.mkApp { drv = packages.default; };
 
           # Used by `nix develop`
+          mission-control.scripts = {
+            init = {
+              description = "cargo init";
+              exec = "${pkgs.boxxy}/bin/boxxy -d cargo init";
+            };
+          };
           devShells.default = pkgs.mkShell {
-
+            inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
               cargo
               rustc
@@ -51,6 +65,6 @@
 
             shellHook = ''echo '${nvimrc}' > .nvimrc.lua'';
           };
-        }
-      );
+        };
+      };
 }

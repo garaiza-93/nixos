@@ -1,0 +1,5 @@
+rules:
+  - name: Sandbox cargo
+    target: ~/.cargo
+    rewrite: ./.data/cargo
+    mode: directory
