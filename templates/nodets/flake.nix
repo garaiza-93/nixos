@@ -4,14 +4,20 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-root.url = "github:srid/flake-root";
+    mission-control.url = "github:Platonic-Systems/mission-control";
   };
 
-  outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-parts, ...}:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      imports = [
+        inputs.flake-root.flakeModule
+        inputs.mission-control.flakeModule
+      ];
+      perSystem = { pkgs, lib, config, ... }:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
-
           pname = "name-me";
           version = "0.1.0";
 
@@ -58,7 +64,7 @@
         {
           # Executed by 'nix build'
           packages.default = pkgs.mkYarnPackage {
-            inherit pname;
+            inherit pname version;
             src = ./.;
             yarnLock = ./yarn.lock;
             packageJSON = ./package.json;
@@ -68,6 +74,12 @@
           apps.default = flake-utils.lib.mkApp { drv = packages.default; };
 
           # Used by `nix develop`
+          mission-control.scripts = {
+            init = {
+              description = "npm install";
+              exec = "${pkgs.boxxy}/bin/boxxy -d npm install";
+            };
+          };
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               nodejs-18_x
@@ -84,6 +96,6 @@
               echo '${nvimrc}' > .nvimrc.lua
             '';
           };
-        }
-      );
+        };
+      };
 }
