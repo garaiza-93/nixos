@@ -46,7 +46,7 @@
                 end
             end
 
-            local servers = { "eslint", "tsserver" }
+            local servers = { "vuels", "tsserver" }
             local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
 
             for _, lsp in ipairs(servers) do
@@ -56,17 +56,17 @@
             vim.cmd("LspStart");
 
             local null_ls = require("null-ls");
-            local sources = { null_ls.builtins.formatting.prettier };
+            local sources = { null_ls.builtins.formatting.eslint_d, null_ls.builtins.diagnostics.eslint_d, null_ls.builtins.code_actions.eslint_d,};
             null_ls.setup({sources = sources})
             '';
         in
         rec
         {
           # Executed by 'nix build'
-          packages.default = pkgs.mkYarnPackage {
+          packages.default = pkgs.mkNpmPackage {
             inherit pname version;
             src = ./.;
-            yarnLock = ./yarn.lock;
+            npmLock = ./package-lock.json;
             packageJSON = ./package.json;
           };
 
@@ -75,21 +75,22 @@
 
           # Used by `nix develop`
           mission-control.scripts = {
-            init = {
+            install = {
               description = "npm install";
               exec = "${pkgs.boxxy}/bin/boxxy -d npm install";
             };
           };
           devShells.default = pkgs.mkShell {
+            inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
+              boxxy
               nodejs-18_x
-              yarn
 
               nodePackages.typescript
               nodePackages.typescript-language-server
+              nodePackages.vls
               nodePackages.eslint
-              nodePackages.prettier
-              nodePackages.vscode-langservers-extracted
+              nodePackages.eslint_d
             ];
 
             shellHook = ''
