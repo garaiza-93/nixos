@@ -12,6 +12,7 @@
     lxappearance
     neofetch
     nix-index
+    nyxt
     transmission-gtk
     thefuck
     xfce.thunar
