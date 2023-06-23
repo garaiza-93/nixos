@@ -3,19 +3,13 @@ local new_cmd = vim.api.nvim_create_autocmd
 --Groups
 local lspGrp = new_group('lsp', { clear = true })
 
-local function conditionalFormat()
-  if string.match(vim.bo.filetype, 'javascript') or string.match(vim.bo.filetype, 'typescript') then
-    vim.cmd('EslintFixAll') -- if eslint_lsp is used. i use eslint_lsp, i dunno about you.
-  else
-    vim.cmd('lua vim.lsp.buf.format()')
-  end
-end
-
 --Format file before write
 new_cmd(
   { 'BufWritePre' },
   {
-    callback = conditionalFormat,
+    callback = function()
+      vim.lsp.buf.format()
+    end,
     group = lspGrp
   }
 )
