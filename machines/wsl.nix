@@ -13,6 +13,12 @@
   system.stateVersion = "22.11";
 
   networking.hostName = "wsl";
+  networking.nameservers = [
+    "10.128.0.115"
+    "10.128.0.116"
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
@@ -53,6 +59,7 @@
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
+    wslConf.network.generateResolvConf = false;
     defaultUser = "gustavo";
     
     startMenuLaunchers = true;
