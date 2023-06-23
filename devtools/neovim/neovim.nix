@@ -41,9 +41,13 @@ with lib;
       cmp_luasnip
       luasnip
       friendly-snippets
+      omnisharp-extended-lsp-nvim
 
       #dap
       nvim-dap
+
+      #dev
+      omnisharp-extended-lsp-nvim
     ];
     extraPackages = with pkgs; [
       ripgrep
