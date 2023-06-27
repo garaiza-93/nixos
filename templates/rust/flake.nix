@@ -22,11 +22,20 @@
           version = "0.1.0";
 
           nvimrc = ''
-            local servers = { "rust_analyzer" }
             local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
-            for _, lsp in ipairs(servers) do
-              require("lspconfig")[lsp].setup {capabilities = caps}
-            end
+            require("lspconfig")["rust_analyzer"].setup {
+              capabilities = caps,
+              settings = {
+                ["rust_analyzer"] = {
+                  checkOnSave = true,
+                  check = {
+                    enable = true,
+                    command = "clippy",
+                    features = "all",
+                  },
+                }
+              }
+            }
 
             vim.cmd("LspStart");
           '';
@@ -47,12 +56,13 @@
           mission-control.scripts = {
             init = {
               description = "cargo init";
-              exec = "${pkgs.boxxy}/bin/boxxy -d cargo init";
+              exec = "boxxy -d cargo init";
             };
           };
           devShells.default = pkgs.mkShell {
             inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
+              boxxy
               cargo
               rustc
               clippy
