@@ -7,41 +7,21 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
     mission-control.url = "github:Platonic-Systems/mission-control";
+    mynvim.url = "github:garaiza-93/nvim-nixified";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-parts, ...}:
+  outputs = inputs@{ self, nixpkgs, flake-utils, flake-parts, mynvim, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
-      imports = [
-        inputs.flake-root.flakeModule
-        inputs.mission-control.flakeModule
-      ];
-      perSystem = { pkgs, lib, config, ... }:
+      imports =
+        [ inputs.flake-root.flakeModule inputs.mission-control.flakeModule ];
+      perSystem = { pkgs, lib, config, inputs', ... }:
         let
           pname = "name-me";
           version = "0.1.0";
 
-          nvimrc = ''
-            local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
-            require("lspconfig")["rust_analyzer"].setup {
-              capabilities = caps,
-              settings = {
-                ["rust_analyzer"] = {
-                  checkOnSave = true,
-                  check = {
-                    enable = true,
-                    command = "clippy",
-                    features = "all",
-                  },
-                }
-              }
-            }
-
-            vim.cmd("LspStart");
-          '';
-        in
-        rec
-        {
+          nvim-rust = inputs'.mynvim.packages.rust-config;
+        in rec {
           # Executed by `nix build`
           packages.default = pkgs.rustPlatform.buildRustPackage {
             inherit pname version;
@@ -63,6 +43,7 @@
             inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
               boxxy
+              nvim-rust
               cargo
               rustc
               clippy
@@ -71,10 +52,9 @@
               pkg-config
             ];
 
-            RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-
-            shellHook = ''echo '${nvimrc}' > .nvimrc.lua'';
+            RUST_SRC_PATH =
+              "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
           };
         };
-      };
+    };
 }
