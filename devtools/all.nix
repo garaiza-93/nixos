@@ -1,10 +1,1 @@
-{ ... }:
-
-{
-  imports = [
-     ./neovim/neovim.nix
-     ./git.nix
-     ./tmux.nix
-     ./misc.nix
-  ];
-}
+{ imports = [ ./direnv.nix ./editors.nix ./git.nix ./misc.nix ./tmux.nix ]; }
