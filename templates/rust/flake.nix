@@ -7,10 +7,11 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
     mission-control.url = "github:Platonic-Systems/mission-control";
-    mynvim.url = "github:garaiza-93/nvim-nixified";
+    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-parts, mynvim, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, flake-utils, flake-parts, nvim-nixified, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
       imports =
@@ -20,7 +21,7 @@
           pname = "name-me";
           version = "0.1.0";
 
-          nvim-rust = inputs'.mynvim.packages.rust-config;
+          nvim-rust = inputs'.nvim-nixified.packages.rust-config;
         in rec {
           # Executed by `nix build`
           packages.default = pkgs.rustPlatform.buildRustPackage {

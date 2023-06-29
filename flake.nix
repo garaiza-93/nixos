@@ -8,7 +8,7 @@
     home-manager-old.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
-    mynvim.url = "github:garaiza-93/nvim-nixified";
+    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
 
     polybar-master = {
       type = "git";
@@ -19,11 +19,12 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
-    , home-manager-old, polybar-master, mynvim }:
+    , home-manager-old, polybar-master, nvim-nixified }:
     let
       system = "x86_64-linux";
-      overlays =
-        [ (final: prev: { nvim = mynvim.packages.x86_64-linux.default; }) ];
+      overlays = [
+        (final: prev: { nvim = nvim-nixified.packages.x86_64-linux.default; })
+      ];
     in {
       nixosConfigurations = {
         EVA-01 = nixpkgs.lib.nixosSystem {
