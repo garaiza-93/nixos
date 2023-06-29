@@ -1,9 +1,7 @@
 { ... }:
 
-let
-  img = ../img;
-in
-{
+let img = ../img;
+in {
   home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
   programs.zsh = {
     enable = true;
@@ -16,11 +14,17 @@ in
       Ld = "ls -lAth --color=auto";
       fucknvidia = "sudo nvidia-settings";
       sysedit = "cd ~/.config/nixos && nvim flake.nix";
-      nvimedit = "cd ~/.config/nixos && nvim devtools/neovim/neovim.nix";
-      buildpersonal = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#EVA-01";
-      buildwork = "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#wsl";
-      updatepersonal = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
-      updatework = "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl && cd -";
+      nvimedit = "cd ~/.config/nvim && nvim flake.nix";
+      buildpersonal =
+        "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#EVA-01 && cd -";
+      buildwork =
+        "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#wsl && cd -";
+      updatepersonal =
+        "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
+      updatework =
+        "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl && cd -";
+      updatenvim =
+        "cd ~/.config/nixos && nix flake lock --update-input nvim-nixified && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
       neofetch = "neofetch --source ${img}/seele-ascii";
     };
     history = {
@@ -50,7 +54,8 @@ in
 
     settings = {
       add_newline = true;
-      format = "$nix_shell$username$hostname$directory$git_branch$git_state$git_status$cmd_duration";
+      format =
+        "$nix_shell$username$hostname$directory$git_branch$git_state$git_status$cmd_duration";
 
       nix_shell = {
         symbol = "";
@@ -81,9 +86,7 @@ in
 
       directory.truncation_length = 3;
 
-      cmd_duration = {
-        style = "bold purple";
-      };
+      cmd_duration = { style = "bold purple"; };
     };
   };
 }
