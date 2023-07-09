@@ -1,9 +1,5 @@
-{ ... }:
-
-let
-  wallpapers = ../../img;
-in
-{
+let wallpapers = ../../img;
+in {
   xsession.windowManager.bspwm = {
     enable = true;
     alwaysResetDesktops = true;
@@ -22,8 +18,6 @@ in
 
       bspc config automatic_scheme spiral
     '';
-
-    #settings = { };
 
     rules = {
       "thunar".state = "floating";
@@ -46,7 +40,7 @@ in
       "GT: New Horizons" = {
         desktop = "^4";
         state = "fullscreen";
-        follow = false;
+        follow = true;
       };
       "Minecraft* 1.18.2" = {
         desktop = "^4";
@@ -67,8 +61,5 @@ in
       "feh --bg-scale ${wallpapers}/eva01.png"
       "flameshot"
     ];
-
-    #extraConfig = '''';
-
   };
 }

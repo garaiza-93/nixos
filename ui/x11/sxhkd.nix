@@ -1,10 +1,7 @@
-{ ... }:
-
 let
   appmenu = "rofi -show drun";
   terminal = "kitty";
-in
-{
+in {
   services.sxhkd = {
     enable = true;
 
@@ -18,9 +15,10 @@ in
       "alt + Return" = "${terminal}";
       "@Super_L" = "${appmenu}";
 
-      "alt + {_,shift +}{h,j,k,l}" = "bspc node --{focus,swap} {west,south,north,east}";
+      "alt + {_,shift +}{h,j,k,l}" =
+        "bspc node --{focus,swap} {west,south,north,east}";
       "alt + {_,shift +}{1-5}" = "bspc {desktop -f,node -d} {1-5}";
-      "alt + f" = "bspc node -t \~fullscreen";
+      "alt + f" = "bspc node -t ~fullscreen";
       "alt + d" = "bspc node -t ~floating";
       "alt + r" = "bspc node @parent -R 90";
 

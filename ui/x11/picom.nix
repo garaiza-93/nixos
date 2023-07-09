@@ -1,13 +1,9 @@
-{ ... }:
-
 {
   services.picom = {
     enable = true;
     fade = true;
     fadeDelta = 2;
     backend = "glx";
-
-    #opacityRules = [];
 
     settings = {
       blur-kern = "5x5box";

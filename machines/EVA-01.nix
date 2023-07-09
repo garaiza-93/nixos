@@ -1,26 +1,19 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-      ../core/all.nix
-      ../fonts.nix
-      ../configuration.nix
-      ../core/samba.nix
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../core/all.nix
+    ../fonts.nix
+    ../configuration.nix
+    ../core/samba.nix
+  ];
 
   system.stateVersion = "unstable";
 
   boot = {
-    initrd.availableKernelModules = [
-      "nvme"
-      "xhci_pci"
-      "ahci"
-      "usb_storage"
-      "usbhid"
-      "sd_mod"
-    ];
+    initrd.availableKernelModules =
+      [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
     kernelModules = [ "kvm-amd" ];
   };
 
@@ -36,13 +29,13 @@
   '';
 
   fileSystems = {
-  "/" =
-    { device = "/dev/disk/by-uuid/0b3ff611-7c24-4943-8768-4a46da0afc32";
+    "/" = {
+      device = "/dev/disk/by-uuid/0b3ff611-7c24-4943-8768-4a46da0afc32";
       fsType = "ext4";
     };
 
-  "/boot" =
-    { device = "/dev/disk/by-uuid/8DB2-8ACE";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/8DB2-8ACE";
       fsType = "vfat";
     };
     "/home/hd1" = {
@@ -72,13 +65,15 @@
   };
 
   services.ratbagd.enable = true;
+  services.flatpak.enable = true;
   hardware.xpadneo.enable = true;
   programs.nm-applet.enable = true;
   programs.zsh.enable = true;
   programs.java.enable = true;
   programs.dconf.enable = true;
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
@@ -92,9 +87,7 @@
       XDG_BIN_HOME = "\${HOME}/.local/bin";
       XDG_DATA_HOME = "\${HOME}/.local/share";
       # following line adds to PATH, not replace.
-      PATH = [
-        "\${XDG_BIN_HOME}"
-      ];
+      PATH = [ "\${XDG_BIN_HOME}" ];
     };
   };
 
