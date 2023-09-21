@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     ani-cli
     betterdiscordctl
-    cura
     discord
+    gimp
     hue-plus
     libreoffice
     lutris
