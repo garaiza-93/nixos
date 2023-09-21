@@ -96,7 +96,8 @@
     users.goose = {
       isNormalUser = true;
       description = "goose";
-      extraGroups = [ "networkmanager" "wheel" "audio" "mlocate" "libvirtd" ];
+      extraGroups =
+        [ "docker" "networkmanager" "wheel" "audio" "mlocate" "libvirtd" ];
     };
   };
 }
