@@ -6,32 +6,19 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-root.url = "github:srid/flake-root";
     mission-control.url = "github:Platonic-Systems/mission-control";
+    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-parts, ...}:
+  outputs = inputs@{ self, nixpkgs, flake-parts, nvim-nixified, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = nixpkgs.lib.systems.flakeExposed;
-      imports = [
-        inputs.flake-root.flakeModule
-        inputs.mission-control.flakeModule
-      ];
-      perSystem = { pkgs, lib, config, ... }:
-        let
-          omnisharp = pkgs.omnisharp-roslyn;
-
-          nvimrc = ''
-            local caps = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities());
-            require("lspconfig").omnisharp.setup {
-              cmd = { "dotnet", "${omnisharp}/lib/omnisharp-roslyn/OmniSharp.dll"},
-              capabilities = caps,
-            }
-
-            vim.cmd("LspStart");
-            '';
-        in
-        {
+      imports =
+        [ inputs.flake-root.flakeModule inputs.mission-control.flakeModule ];
+      perSystem = { pkgs, lib, config, inputs', ... }:
+        let nvim-dotnet = inputs'.nvim-nixified.packages.dotnet-config;
+        in {
           # Executed by 'nix build'
-            #empty...
+          #empty...
           # Used by `nix develop`
           mission-control.scripts = {
             dnbuild = {
@@ -42,12 +29,13 @@
           devShells.default = pkgs.mkShell {
             inputsFrom = [ config.mission-control.devShell ];
             buildInputs = with pkgs; [
+              nvim-dotnet
               #basics
               dotnet-sdk_7
               dotnet-runtime
 
               #packages
-              dotnetPackages.Nuget #install nuget declaratively
+              dotnetPackages.Nuget # install nuget declaratively
 
               #unit testing
               dotnetPackages.NUnit
@@ -59,11 +47,7 @@
 
             DOTNET_CLI_TELEMETRY_OPTOUT = 1;
             DOTNET_SKIP_FIRST_TIME_EXPERIENCE = "true";
-
-            shellHook = ''
-              echo '${nvimrc}' > .nvimrc.lua
-            '';
           };
         };
-      };
+    };
 }
