@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   retroarch = pkgs.retroarch.override {
-    cores = with pkgs.libretro; [ dolphin pcsx-rearmed mupen64plus ];
+    cores = with pkgs.libretro; [ dolphin pcsx-rearmed mupen64plus flycast ];
   };
 in {
   home.sessionVariables."STEAM_EXTRA_COMPAT_TOOLS_PATHS" =
