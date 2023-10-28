@@ -60,6 +60,7 @@ in {
       "systemctl --user restart picom.service"
       "feh --bg-scale ${wallpapers}/eva01.png"
       "flameshot"
+      "blueman-applet"
     ];
   };
 }
