@@ -20,35 +20,29 @@ in {
     '';
 
     rules = {
-      "thunar".state = "floating";
+      "Thunar".state = "floating";
       "Firefox".desktop = "^1";
-      "discord".desktop = "^2";
+      "discord" = {
+        desktop = "^2";
+        follow = false;
+      };
       "Steam" = {
         desktop = "^3";
-        follow = true;
+        follow = false;
       };
       "PrismLauncher" = {
         desktop = "^3";
         state = "floating";
-        follow = true;
-      };
-      "Minecraft 1.7.10" = {
-        desktop = "^4";
-        state = "fullscreen";
         follow = false;
       };
       "GT: New Horizons" = {
-        desktop = "^4";
+        desktop = "^3";
         state = "fullscreen";
         follow = true;
-      };
-      "Minecraft* 1.18.2" = {
-        desktop = "^4";
-        state = "fullscreen";
-        follow = false;
+        focus = true;
       };
       "FINAL FANTASY XIV" = {
-        desktop = "^4";
+        desktop = "^3";
         state = "fullscreen";
         follow = true;
         focus = true;
@@ -61,6 +55,9 @@ in {
       "feh --bg-scale ${wallpapers}/eva01.png"
       "flameshot"
       "blueman-applet"
+      "firefox"
+      "discord"
+      "prismlauncher"
     ];
   };
 }
