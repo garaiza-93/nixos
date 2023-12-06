@@ -6,7 +6,6 @@
     ../core/all.nix
     ../fonts.nix
     ../configuration.nix
-    ../core/samba.nix
   ];
 
   system.stateVersion = "unstable";
@@ -49,7 +48,7 @@
   };
 
   xdg.portal = {
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
     enable = true;
   };
 
