@@ -1,0 +1,5 @@
+rules:
+  - name: Sandbox npm
+    target: ~/.npm
+    rewrite: ./.data/npm
+    mode: directory
