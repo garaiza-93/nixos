@@ -15,6 +15,10 @@
         path = ./rust;
         description = "Build/run/develop rust project";
       };
+      python = {
+        path = ./python;
+        description = "Build/run/develop python project";
+      };
     };
   };
 }
