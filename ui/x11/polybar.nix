@@ -3,13 +3,13 @@
 {
   services.polybar = {
     enable = true;
-    package = (pkgs.polybar.overrideAttrs (o: {src = polybar-master;}))
-      .override{ pulseSupport = true ;};
+    package =
+      (pkgs.polybar.overrideAttrs (o: { src = polybar-master; })).override {
+        pulseSupport = true;
+      };
 
     config = {
-      "fonts" = {
-        hack = "Hack Nerd Font:size=12;2";
-      };
+      "fonts" = { hack = "Hack Nerd Font:size=12;2"; };
 
       "colors" = {
         transparent = "#00000000";
@@ -82,6 +82,7 @@
 
       "bar/allinone" = {
         wm-restack = "bspwm";
+        enable-ipc = true;
 
         width = "100%";
         height = 40;
@@ -137,7 +138,7 @@
         bar-volume-fill = "%{T7}━%{T-}";
         bar-volume-foreground = "\${colors.light}";
         bar-volume-indicator = "%{T7}━%{T-}";
-
+        click-right = "pavucontrol";
       };
 
       "module/wireless" = {
