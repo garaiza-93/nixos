@@ -22,6 +22,8 @@
     options = "--delete-older-than 7d";
   };
 
+  nix.settings.trusted-users = [ "root" "goose" ];
+
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
