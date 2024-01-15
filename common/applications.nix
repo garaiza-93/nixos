@@ -3,6 +3,7 @@
 {
   home.sessionVariables."BROWSER" = "firefox";
   home.packages = with pkgs; [
+    ani-cli
     borgbackup
     firefox
     gparted
@@ -16,6 +17,7 @@
     transmission-gtk
     thefuck
     xfce.thunar
+    xfce.tumbler
     unetbootin
     unzip
     wget
