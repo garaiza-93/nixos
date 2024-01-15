@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 let
   appmenu = "rofi -show drun";
   terminal = "kitty";
@@ -10,7 +11,7 @@ in {
 
       "alt + shift + q" = "bspc node -c";
 
-      "@Print" = "flameshot gui";
+      "{_,shift + }@Print" = "{flameshot gui,peek}";
 
       "alt + Return" = "${terminal}";
       "@Super_L" = "${appmenu}";
@@ -21,6 +22,10 @@ in {
       "alt + f" = "bspc node -t ~fullscreen";
       "alt + d" = "bspc node -t ~floating";
       "alt + r" = "bspc node @parent -R 90";
+      "alt + equal" =
+        "gap=$(bspc query --tree --monitor | ${pkgs.jq} '.windowGap'); new_gap=$(( $gap + 5 )); bspc config window_gap \${new_gap}";
+      "alt + minus" =
+        "gap=$(bspc query --tree --monitor | ${pkgs.jq} '.windowGap'); new_gap=$(( $gap - 5 )); bspc config window_gap \${new_gap}";
 
       "XF86AudioRaiseVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05+";
       "XF86AudioLowerVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05-";
