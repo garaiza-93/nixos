@@ -7,5 +7,6 @@
     mpv
     pavucontrol
     peek
+    playerctl
   ];
 }

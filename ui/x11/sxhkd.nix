@@ -31,6 +31,9 @@ in {
       "XF86AudioLowerVolume" = "wpctl set-volume @DEFAULT_SINK@ 0.05-";
       "XF86AudioMute" = "wpctl set-mute @DEFAULT_SINK@ toggle";
       "XF86AudioMicMute" = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
+      "XF86AudioPlay" = "playerctl play-pause";
+      "XF86AudioNext" = "playerctl next";
+      "XF86AudioPrev" = "playerctl previous";
     };
   };
 }
