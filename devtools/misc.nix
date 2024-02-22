@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.google-cloud-sdk ];
+  home.packages = [ pkgs.fzf ];
 }

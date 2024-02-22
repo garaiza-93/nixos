@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     ani-cli
     discord
-    fzf
     gimp
     hue-plus
     lutris
