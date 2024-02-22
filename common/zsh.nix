@@ -15,6 +15,8 @@ in {
       fucknvidia = "sudo nvidia-settings";
       sysedit = "cd ~/.config/nixos && nvim flake.nix";
       nvimedit = "cd ~/.config/nvim && nvim flake.nix";
+      updateinput = ''
+        nix flake metadata | grep -Ev "│|└" | grep "├" | sed 's/:.*//g' | sed -e 's/\x1b\[[0-9;]*m//g' | sed 's/[^a-zA-Z0-9\-]//g' | fzf | xargs nix flake lock --update-input'';
       buildpersonal =
         "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#EVA-01 && cd -";
       buildwork =

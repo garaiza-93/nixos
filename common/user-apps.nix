@@ -2,10 +2,9 @@
   home.packages = with pkgs; [
     ani-cli
     discord
-    dorion
+    fzf
     gimp
     hue-plus
-    libreoffice
     lutris
     piper
     wineWowPackages.full
