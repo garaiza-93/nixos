@@ -35,9 +35,17 @@
 
           # Used by `nix develop`
           mission-control.scripts = {
-            init = {
-              description = "cargo init";
-              exec = "boxxy -d cargo init";
+            rWatch = {
+              description = "continuous `cargo check`";
+              exec = "boxxy -d cargo watch";
+            };
+            rWatchAll = {
+              description = "Watch check and tests";
+              exec = "boxxy -d cargo watch -x check -x test";
+            };
+            rTest = {
+              description = "Run tests";
+              exec = "boxxy -d cargo test";
             };
           };
           devShells.default = pkgs.mkShell {
@@ -46,6 +54,7 @@
               boxxy
               nvim-rust
               cargo
+              cargo-watch
               rustc
               clippy
               rustfmt
