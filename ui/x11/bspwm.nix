@@ -21,7 +21,7 @@ in {
 
     rules = {
       "Thunar".state = "floating";
-      "Firefox".desktop = "^1";
+      "firefox".desktop = "^1";
       "discord" = {
         desktop = "^2";
         follow = false;

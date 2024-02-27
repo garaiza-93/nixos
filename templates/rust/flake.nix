@@ -36,7 +36,7 @@
           # Used by `nix develop`
           mission-control.scripts = {
             rWatch = {
-              description = "continuous `cargo check`";
+              description = "continuous cargo check";
               exec = "boxxy -d cargo watch";
             };
             rWatchAll = {
