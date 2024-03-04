@@ -29,9 +29,8 @@ in {
       updatenvim =
         "cd ~/.config/nixos && nix flake lock --update-input nvim-nixified && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
       neofetch = "neofetch --source ${img}/seele-ascii";
-      adl =
-        "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 929283673727.dkr.ecr.us-east-2.amazonaws.com";
-      ghe = "GH_HOST=https://github.com/ntst-simple gh";
+      gitexcludefile = "$HOME/.config/nixos/scripts/gitexcludefile.sh";
+      updateflakes = "$HOME/.config/nixos/scripts/update_flakes.sh";
     };
     history = {
       size = 10000;
