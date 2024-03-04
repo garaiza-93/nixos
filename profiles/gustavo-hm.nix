@@ -6,7 +6,7 @@ in {
   home.username = "gustavo";
   home.homeDirectory = "/home/gustavo";
   home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
-  home.packages = with oldpkgs; [ awscli2 ];
+  home.packages = with oldpkgs; [ awscli2 gh ];
 
   manual.manpages.enable = true;
 
