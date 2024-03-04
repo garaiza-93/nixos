@@ -13,7 +13,10 @@ in {
   programs.home-manager.enable = true;
 
   imports = [
-    ../devtools/all.nix
+    ../devtools/tmux.nix
+    ../devtools/direnv.nix
+    ../devtools/editors.nix
+    ../devtools/git-hm.nix
     ../common/btop.nix
     ../zsh/gustavo-hm-zsh.nix
     ../prompts/gustavo-hm.nix
