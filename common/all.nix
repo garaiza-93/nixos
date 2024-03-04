@@ -8,6 +8,5 @@
     ./kitty.nix
     ./media.nix
     ./user-apps.nix
-    ./zsh.nix
   ];
 }

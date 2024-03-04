@@ -2,7 +2,6 @@
 
 let img = ../img;
 in {
-  home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -21,13 +20,20 @@ in {
         "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#EVA-01 && cd -";
       buildwork =
         "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#wsl && cd -";
+      buildhm =
+        "home-manager switch --flake $HOME/.config/nixos#gustavo-hm && cd -";
       updatepersonal =
         "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
       updatework =
         "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl && cd -";
+      updatehm =
+        "cd ~/.config/nixos && nix flake update && home-manager switch --flake $HOME/.config/nixos#gustavo-hm && cd -";
       updatenvim =
         "cd ~/.config/nixos && nix flake lock --update-input nvim-nixified && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
       neofetch = "neofetch --source ${img}/seele-ascii";
+      adl =
+        "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 929283673727.dkr.ecr.us-east-2.amazonaws.com";
+      ghe = "GH_HOST=https://github.com/ntst-simple gh";
     };
     history = {
       size = 10000;
@@ -48,47 +54,5 @@ in {
       export DIRENV_LOG_FORMAT=
       eval "$(direnv hook zsh)"
     '';
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-
-    settings = {
-      add_newline = true;
-      format =
-        "$nix_shell$username$hostname$directory$git_branch$git_state$git_status$cmd_duration";
-
-      nix_shell = {
-        symbol = "";
-        format = "[$symbol]($style) ";
-        style = "bright-purple bold";
-      };
-
-      username = {
-        show_always = true;
-        style_user = "#8aa2f7 bold";
-        style_root = "bright-red bold";
-        format = "[$user]($style)";
-      };
-
-      hostname = {
-        ssh_only = false;
-        style = "#7aa2f7 bold";
-        format = "[@$hostname$ssh_symbol ]($style)";
-      };
-      git_branch = {
-        format = "[$symbol$branch ]($style)";
-        style = "#9ece6a bold";
-      };
-
-      git_state.style = "#bb9af7";
-
-      git_status.style = "#f7768e";
-
-      directory.truncation_length = 3;
-
-      cmd_duration = { style = "bold purple"; };
-    };
   };
 }
