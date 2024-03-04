@@ -21,7 +21,7 @@ in {
       buildwork =
         "sudo nixos-rebuild switch --flake path:$HOME/.config/nixos#wsl && cd -";
       buildhm =
-        "home-manager switch --flake $HOME/.config/nixos#gustavo-hm && cd -";
+        "home-manager switch --flake $HOME/.config/nixos#gustavo && cd -";
       updatepersonal =
         "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
       updatework =
