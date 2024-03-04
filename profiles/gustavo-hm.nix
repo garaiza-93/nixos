@@ -16,6 +16,6 @@ in {
     ../devtools/all.nix
     ../common/btop.nix
     ../zsh/default.nix
-    ../prompts/gustavo-hm-zsh.nix
+    ../prompts/gustavo-hm.nix
   ];
 }
