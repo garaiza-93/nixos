@@ -1,5 +1,3 @@
-{ ... }:
-
 let img = ../img;
 in {
   programs.zsh = {

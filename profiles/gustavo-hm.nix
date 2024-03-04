@@ -15,7 +15,7 @@ in {
   imports = [
     ../devtools/all.nix
     ../common/btop.nix
-    ../zsh/default.nix
+    ../zsh/gustavo-hm-zsh.nix
     ../prompts/gustavo-hm.nix
   ];
 }
