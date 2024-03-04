@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   programs.git = {
     enable = true;
@@ -10,13 +8,7 @@
       new = "checkout -b";
       undo = "reset HEAD~1";
     };
-    ignores = [
-      "/.data"
-      "/.direnv"
-      "\.nvimrc.lua"
-      "boxxy*"
-      "*.envrc"
-    ];
+    ignores = [ "/.data" "/.direnv" ".nvimrc.lua" "boxxy*" "*.envrc" ];
     extraConfig = {
       user.username = "garaiza-93";
       init.defaultBranch = "master";
