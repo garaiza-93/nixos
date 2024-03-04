@@ -71,7 +71,7 @@
       homeConfigurations."gustavo" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [ ./profiles/gustavo-hm.nix ];
-        extraSpecialArgs = { inherit nvim-nixified; };
+        extraSpecialArgs = { inherit nvim-nixified nixpkgs-old system; };
       };
     };
 }
