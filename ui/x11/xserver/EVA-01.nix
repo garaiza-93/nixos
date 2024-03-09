@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-
 {
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
     desktopManager.xterm.enable = false;
     windowManager.bspwm.enable = true;
     displayManager.defaultSession = "none+bspwm";
