@@ -350,11 +350,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709578243,
-        "narHash": "sha256-hF96D+c2PBmAFhymMw3z8hou++lqKtZ7IzpFbYeL1/Y=",
+        "lastModified": 1710164657,
+        "narHash": "sha256-l64+ZjaQAVkHDVaK0VHwtXBdjcBD6nLBD+p7IfyBp/w=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "23ff9821bcaec12981e32049e8687f25f11e5ef3",
+        "rev": "017b12de5b899ef9b64e2c035ce257bfe95b8ae2",
         "type": "github"
       },
       "original": {
@@ -485,11 +485,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709211223,
-        "narHash": "sha256-1cjd+yXbTlnCwNwEDjn289rJ2f0er5M8pOig4PxniEM=",
+        "lastModified": 1709980437,
+        "narHash": "sha256-rp1MwfRaZl7TPM4E5i1HxQGJCCfMcIa7dOzTX3SW7ro=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "3257ad7f173b0314c8a42fec450fa6556495b97c",
+        "rev": "e0b9e6c8ff35c7a28cb6baa02d85a9737a2ee4e9",
         "type": "github"
       },
       "original": {
@@ -550,11 +550,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1709237383,
-        "narHash": "sha256-cy6ArO4k5qTx+l5o+0mL9f5fa86tYUX3ozE1S+Txlds=",
+        "lastModified": 1709961763,
+        "narHash": "sha256-6H95HGJHhEZtyYA3rIQpvamMKAGoa8Yh2rFV29QnuGw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1536926ef5621b09bba54035ae2bb6d806d72ac8",
+        "rev": "3030f185ba6a4bf4f18b87f345f104e6a6961f34",
         "type": "github"
       },
       "original": {
@@ -632,11 +632,11 @@
         "rustaceanvim": "rustaceanvim"
       },
       "locked": {
-        "lastModified": 1709870163,
-        "narHash": "sha256-a7hSG8XNi8DqqMbpo+do+OaDd6XohUWNfaQgQ8DhciY=",
+        "lastModified": 1710269996,
+        "narHash": "sha256-8YCpniS2FG30YpP2jGvI0mLLybUv/Yo8KRCKTQBtu6Y=",
         "owner": "garaiza-93",
         "repo": "nvim-nixified",
-        "rev": "c2230350bcb2d7cc7ebbf2d95c673e3d064e7bcf",
+        "rev": "0910c472d862f9d452a52f4041d13a3641eaf273",
         "type": "github"
       },
       "original": {
@@ -725,11 +725,11 @@
     "steamtinkerlaunch-master": {
       "flake": false,
       "locked": {
-        "lastModified": 1709497260,
-        "narHash": "sha256-veTqDJNAGgcJzR1vXwf50f2OuW2GtHrtZvjXkmQjEs0=",
+        "lastModified": 1709763334,
+        "narHash": "sha256-rlgjITEfDqHtgTf4hPSiozuVOKL7jj7O0gOtt6kXYJ0=",
         "ref": "refs/heads/master",
-        "rev": "c88bccf5794ddfd7e411c5ad7ecd7a7743e585d1",
-        "revCount": 1378,
+        "rev": "8bcc2af6492c8feccea3ce249f62829e7ff8ece7",
+        "revCount": 1382,
         "type": "git",
         "url": "https://github.com/sonic2kk/steamtinkerlaunch.git"
       },
