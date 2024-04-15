@@ -1,12 +1,10 @@
-{ nixpkgs-old, system, ... }:
-let oldpkgs = nixpkgs-old.legacyPackages.${system};
-in {
-  home.stateVersion = "22.11";
+{ pkgs, ... }: {
+  home.stateVersion = "24.05";
 
   home.username = "gustavo";
   home.homeDirectory = "/home/gustavo";
   home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
-  home.packages = with oldpkgs; [ awscli2 gh ];
+  home.packages = with pkgs; [ awscli2 gh fzf ];
 
   manual.manpages.enable = true;
 
