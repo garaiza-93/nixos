@@ -10,6 +10,7 @@ for item in $(ls -A); do
         # If it's a directory, enter it and run nix flake update
         echo "Entering directory: $item"
         cd "$item"
+        git add flake*
         nix flake update
         # Return to the original directory
         cd ..
