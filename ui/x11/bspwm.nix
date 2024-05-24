@@ -22,7 +22,7 @@ in {
     rules = {
       "Thunar".state = "floating";
       "firefox".desktop = "^1";
-      "discord" = {
+      "vesktop" = {
         desktop = "^2";
         follow = false;
       };
@@ -56,7 +56,7 @@ in {
       "flameshot"
       "blueman-applet"
       "firefox"
-      "discord"
+      "vesktop"
       "prismlauncher"
     ];
   };

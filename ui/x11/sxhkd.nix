@@ -10,6 +10,7 @@ in {
       "alt + shift + {e,d}" = "{~/.config/bspwm/bspwmrc,pkill -USR1 -x sxhkd}";
 
       "alt + shift + q" = "bspc node -c";
+      "alt + shift + x" = "xwininfo | xdotool getwindowfocus windowkill";
 
       "{_,shift + }@Print" = "{flameshot gui,peek}";
 
