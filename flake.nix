@@ -24,11 +24,18 @@
       url = "https://github.com/sonic2kk/steamtinkerlaunch.git";
       flake = false;
     };
+
+    vesktop-latest = {
+      type = "git";
+      url = "https://github.com/Vencord/Vesktop.git";
+      rev = "e9da30e420a45c6b38e99e6b854a707e42e6fd8a";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master }:
+    , steamtinkerlaunch-master, vesktop-latest }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -43,7 +50,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit polybar-master nvim-nixified dolphin-emu-nix
-                  steamtinkerlaunch-master;
+                  steamtinkerlaunch-master vesktop-latest;
               };
               home-manager.users.goose = {
                 imports = [ ./profiles/goose.nix ];

@@ -632,11 +632,11 @@
         "rustaceanvim": "rustaceanvim"
       },
       "locked": {
-        "lastModified": 1711563719,
-        "narHash": "sha256-mSCG2pLb84m1tme4zbcZ6wZVcINaiAHK9oWnETv+aDs=",
+        "lastModified": 1712161276,
+        "narHash": "sha256-zwzgUn2PF+vuvNelNTiSeohKOe1mtTuTVxiWCHcr6/0=",
         "owner": "garaiza-93",
         "repo": "nvim-nixified",
-        "rev": "625d400024b209371483c354e92064e01a44b5df",
+        "rev": "e06ae324c2e3b65a7f5aaaa803aef5c599591ca5",
         "type": "github"
       },
       "original": {
@@ -703,7 +703,8 @@
         "nixpkgs-old": "nixpkgs-old",
         "nvim-nixified": "nvim-nixified",
         "polybar-master": "polybar-master",
-        "steamtinkerlaunch-master": "steamtinkerlaunch-master"
+        "steamtinkerlaunch-master": "steamtinkerlaunch-master",
+        "vesktop-latest": "vesktop-latest"
       }
     },
     "rustaceanvim": {
@@ -826,6 +827,23 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
+      }
+    },
+    "vesktop-latest": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1714574715,
+        "narHash": "sha256-cZOyydwpIW9Xq716KVi1RGtSlgVnOP3w8vXDwouS70E=",
+        "ref": "refs/heads/main",
+        "rev": "e9da30e420a45c6b38e99e6b854a707e42e6fd8a",
+        "revCount": 311,
+        "type": "git",
+        "url": "https://github.com/Vencord/Vesktop.git"
+      },
+      "original": {
+        "rev": "e9da30e420a45c6b38e99e6b854a707e42e6fd8a",
+        "type": "git",
+        "url": "https://github.com/Vencord/Vesktop.git"
       }
     }
   },
