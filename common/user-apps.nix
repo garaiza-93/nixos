@@ -1,11 +1,11 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     ani-cli
-    discord
     gimp
     hue-plus
     lutris
     piper
+    (vesktop.override { withSystemVencord = false; })
     wineWowPackages.full
     winetricks
   ];
