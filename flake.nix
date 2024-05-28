@@ -75,10 +75,11 @@
           ];
         };
       };
-      homeConfigurations."gustavo" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./profiles/gustavo-hm.nix ];
-        extraSpecialArgs = { inherit nvim-nixified system; };
-      };
+      homeConfigurations."gustavo-hm" =
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [ ./profiles/gustavo-hm.nix ];
+          extraSpecialArgs = { inherit nvim-nixified system; };
+        };
     };
 }
