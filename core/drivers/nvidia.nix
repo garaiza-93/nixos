@@ -1,8 +1,5 @@
-{ pkgs, config, ... }:
-{
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-  };
+{ pkgs, ... }: {
+  services.xserver = { videoDrivers = [ "nvidia" ]; };
 
   hardware = {
     opengl = {
@@ -11,8 +8,6 @@
       extraPackages = [ pkgs.mesa ];
     };
     nvidia.forceFullCompositionPipeline = true;
-    #TODO: Once 530 driver is fixed, use older driver
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
 }

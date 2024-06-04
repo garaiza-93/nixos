@@ -1,13 +1,11 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   boot = {
     loader = {
       systemd-boot.enable = true;
-      efi = {
-        canTouchEfiVariables = true;
-      };
+      efi = { canTouchEfiVariables = true; };
     };
-    kernelPackages = pkgs.linuxPackages_6_1;
+    kernelPackages = pkgs.linuxPackages_xanmod;
   };
 }

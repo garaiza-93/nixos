@@ -1,4 +1,4 @@
-{ pkgs, dolphin-emu-nix, steamtinkerlaunch-master, ... }:
+{ pkgs, inputs, ... }:
 let
   mupen64plus-patched = pkgs.libretro.mupen64plus.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [ ../patches/larger_cart_rom.patch ];
@@ -15,7 +15,7 @@ in {
   home.sessionVariables."STEAM_EXTRA_COMPAT_TOOLS_PATHS" =
     "\${HOME}/.steam/root/compatibilitytools.d";
   home.packages = with pkgs; [
-    dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
+    inputs.dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
     itch
     osu-lazer
     pcsx2
@@ -24,8 +24,7 @@ in {
     protonup-ng
     r2modman
     retroarch
-    steam
-    steam-run
-    (steamtinkerlaunch.overrideAttrs (o: { src = steamtinkerlaunch-master; }))
+    (steamtinkerlaunch.overrideAttrs
+      (o: { src = inputs.steamtinkerlaunch-master; }))
   ];
 }

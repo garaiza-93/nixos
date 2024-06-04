@@ -24,6 +24,13 @@
 
   nix.settings.trusted-users = [ "root" "goose" ];
 
+  nix.settings = {
+    substituters = [ "https://nix-gaming.cachix.org" ];
+    trusted-public-keys = [
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+    ];
+  };
+
   nix.extraOptions = ''
     keep-outputs = true
     keep-derivations = true
@@ -72,6 +79,9 @@
   programs.zsh.enable = true;
   programs.java.enable = true;
   programs.dconf.enable = true;
+
+  programs.steam.enable = true;
+  programs.steam.platformOptimizations.enable = true;
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
