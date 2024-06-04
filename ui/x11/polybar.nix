@@ -1,12 +1,10 @@
-{ pkgs, polybar-master, ... }:
+{ pkgs, inputs, ... }:
 
 {
   services.polybar = {
     enable = true;
-    package =
-      (pkgs.polybar.overrideAttrs (o: { src = polybar-master; })).override {
-        pulseSupport = true;
-      };
+    package = (pkgs.polybar.overrideAttrs
+      (o: { src = inputs.polybar-master; })).override { pulseSupport = true; };
 
     config = {
       "fonts" = { hack = "Hack Nerd Font:size=12;2"; };

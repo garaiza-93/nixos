@@ -6,6 +6,7 @@
     home-manager-old.url = "github:nix-community/home-manager/release-22.11";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nvim-nixified.url = "github:garaiza-93/nvim-nixified";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +36,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master, vesktop-latest }:
+    , steamtinkerlaunch-master, vesktop-latest, nix-gaming }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -44,14 +45,13 @@
           modules = [
             ./machines/EVA-01.nix
             ./ui/x11/xserver/EVA-01.nix
+            nix-gaming.nixosModules.pipewireLowLatency
+            nix-gaming.nixosModules.platformOptimizations
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit polybar-master nvim-nixified dolphin-emu-nix
-                  steamtinkerlaunch-master vesktop-latest;
-              };
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.goose = {
                 imports = [ ./profiles/goose.nix ];
               };
@@ -67,7 +67,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit self; };
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.gustavo = {
                 imports = [ ./profiles/gustavo.nix ];
               };
