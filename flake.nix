@@ -1,13 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager-old.url = "github:nix-community/home-manager/release-22.11";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
-    nix-gaming.url = "github:fufexan/nix-gaming";
     dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
+    helix.url = "github:helix-editor/helix";
+    home-manager-old.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager";
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager-old.inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +37,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master, vesktop-latest, nix-gaming }@inputs:
+    , steamtinkerlaunch-master, vesktop-latest, nix-gaming, helix }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
