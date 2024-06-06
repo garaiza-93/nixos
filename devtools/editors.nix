@@ -1,6 +1,18 @@
-{ inputs, ... }: {
-  home.packages = [
-    inputs.helix.packages.x86_64-linux.default
-    inputs.nvim-nixified.packages.x86_64-linux.default
-  ];
+{ pkgs, config, inputs, ... }: {
+  home.packages = [ inputs.nvim-nixified.packages.x86_64-linux.default ];
+
+  programs.helix.enable = true;
+  # Handle Helix configuration imperatively. Might port to the module later.
+  home.file.".config/helix/config.toml".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
+
+  programs.helix.languages = {
+    language-server.omnisharp.command =
+      "${pkgs.omnisharp-roslyn}/bin/Omnisharp";
+    languages = [{
+      name = "c-sharp";
+      debugger.command = "${pkgs.netcoredbg}/bin/netcoredbg";
+    }];
+  };
 }

@@ -1,0 +1,58 @@
+theme = "starlight"
+
+[editor]
+bufferline = "multiple"
+completion-replace = true
+cursorline = true
+line-number = "relative"
+rulers = [80, 120]
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.whitespace]
+render.space = "all"
+render.tab = "all"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[keys.normal]
+D =  ["extend_to_line_bounds", "delete_selection"]
+G =  "goto_file_end"
+"\\" = { f = ":fmt" }
+
+[keys.normal.space]
+ret = ":config-reload"
+
+[keys.normal.n]
+n = ":buffer-next"
+p = ":buffer-previous"
+c = ":buffer-close"
+C = ":buffer-close-others"
+
+[keys.insert]
+j = { k = "normal_mode" }
