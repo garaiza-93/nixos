@@ -1,7 +1,12 @@
 {
+  nixConfig = {
+    extra-substituters = [ "https://helix.cachix.org" ];
+    extra-trusted-public-keys =
+      [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
+  };
+
   inputs = {
     dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
-    helix.url = "github:helix-editor/helix";
     home-manager-old.url = "github:nix-community/home-manager/release-22.11";
     home-manager.url = "github:nix-community/home-manager";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -37,7 +42,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master, vesktop-latest, nix-gaming, helix }@inputs:
+    , steamtinkerlaunch-master, vesktop-latest, nix-gaming }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -80,7 +85,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./profiles/gustavo-hm.nix ];
-          extraSpecialArgs = { inherit nvim-nixified system; };
+          extraSpecialArgs = { inherit inputs; };
         };
     };
 }
