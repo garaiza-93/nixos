@@ -16,25 +16,24 @@
     kernelModules = [ "kvm-amd" ];
   };
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    settings = {
+      trusted-users = [ "root" "goose" ];
+      substituters = [ "https://nix-gaming.cachix.org" ];
+      trusted-public-keys = [
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      ];
+    };
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+    '';
   };
-
-  nix.settings.trusted-users = [ "root" "goose" ];
-
-  nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [
-      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-    ];
-  };
-
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-  '';
 
   fileSystems = {
     "/" = {
@@ -72,19 +71,30 @@
     firewall.allowPing = true;
   };
 
-  services.ratbagd.enable = true;
-  services.flatpak.enable = true;
-  hardware.xpadneo.enable = true;
-  programs.nm-applet.enable = true;
-  programs.zsh.enable = true;
-  programs.java.enable = true;
-  programs.dconf.enable = true;
+  services = {
+    ratbagd.enable = true;
+    flatpak.enable = true;
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+    };
 
-  programs.steam.enable = true;
-  programs.steam.platformOptimizations.enable = true;
+    displayManager.defaultSession = "none+bspwm";
+  };
+
+  programs = {
+    nm-applet.enable = true;
+    zsh.enable = true;
+    java.enable = true;
+    dconf.enable = true;
+
+    steam.enable = true;
+    steam.platformOptimizations.enable = true;
+  };
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.xpadneo.enable = true;
 
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
