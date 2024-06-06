@@ -16,10 +16,9 @@ in {
     "\${HOME}/.steam/root/compatibilitytools.d";
   home.packages = with pkgs; [
     inputs.dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
-    itch
     osu-lazer
     pcsx2
-    prismlauncher-qt5
+    prismlauncher
     protontricks
     protonup-ng
     r2modman
