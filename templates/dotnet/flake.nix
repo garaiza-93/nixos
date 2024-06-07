@@ -47,6 +47,10 @@
 
             DOTNET_CLI_TELEMETRY_OPTOUT = 1;
             DOTNET_SKIP_FIRST_TIME_EXPERIENCE = "true";
+
+            shellHook = ''
+              export PATH=$PATH:${pkgs.omnisharp-roslyn}/bin:${pkgs.netcoredbg}/bin
+            '';
           };
         };
     };
