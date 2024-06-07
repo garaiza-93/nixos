@@ -47,6 +47,10 @@
           ];
 
           RUST_SRC_PATH = "${toolchain.rust-src}/lib/rustlib/src/rust/library";
+
+          shellHook = ''
+            export PATH=$PATH:${pkgs.lldb}/bin
+          '';
         };
       });
 }
