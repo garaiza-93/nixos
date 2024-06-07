@@ -22,6 +22,7 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+    optimise.automatic = true;
     settings = {
       trusted-users = [ "root" "goose" ];
       substituters = [ "https://nix-gaming.cachix.org" ];
