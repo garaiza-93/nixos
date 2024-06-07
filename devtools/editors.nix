@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }: {
+{ config, inputs, ... }: {
   home.packages = [ inputs.nvim-nixified.packages.x86_64-linux.default ];
 
   programs.helix.enable = true;
@@ -8,11 +8,10 @@
     "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
 
   programs.helix.languages = {
-    language-server.omnisharp.command =
-      "${pkgs.omnisharp-roslyn}/bin/Omnisharp";
+    language-server.omnisharp.command = "OmniSharp";
     languages = [{
       name = "c-sharp";
-      debugger.command = "${pkgs.netcoredbg}/bin/netcoredbg";
+      debugger.command = "netcoredbg";
     }];
   };
 }
