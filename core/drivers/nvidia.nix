@@ -8,6 +8,7 @@
       extraPackages = [ pkgs.mesa ];
     };
     nvidia.forceFullCompositionPipeline = true;
+    nvidia.modesetting.enable = true;
   };
 
 }
