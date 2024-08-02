@@ -11,9 +11,7 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../devtools/tmux.nix
-    ../devtools/direnv.nix
-    ../devtools/editors.nix
+    ../devtools/core.nix
     ../devtools/git-hm.nix
     ../common/btop.nix
     ../zsh/gustavo-hm-zsh.nix
