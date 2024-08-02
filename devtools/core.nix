@@ -1,4 +1,11 @@
 { pkgs, ... }: {
-  home.packages = [ pkgs.fzf ];
-  imports = [ ./direnv.nix ./editors.nix ./git.nix ./tmux.nix ];
+  home.packages = with pkgs; [
+    fzf
+    jq
+    lazydocker
+    lazygit
+    python311Packages.howdoi
+    thefuck
+  ];
+  imports = [ ./direnv.nix ./editors.nix ./tmux.nix ];
 }
