@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   home.sessionVariables."BROWSER" = "firefox";
   home.packages = with pkgs; [
     ani-cli
@@ -15,7 +13,6 @@
     nix-index
     nyxt
     transmission-gtk
-    thefuck
     xfce.thunar
     xfce.tumbler
     unetbootin
@@ -23,5 +20,6 @@
     wget
     xdotool
     xorg.xwininfo
+    yai
   ];
 }
