@@ -1,14 +1,12 @@
 { pkgs, ... }: {
-  services.xserver = { videoDrivers = [ "nvidia" ]; };
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport32Bit = true;
-      extraPackages = [ pkgs.mesa ];
-    };
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+    graphics.extraPackages = [ pkgs.mesa ];
+
     nvidia.forceFullCompositionPipeline = true;
     nvidia.modesetting.enable = true;
   };
-
 }
