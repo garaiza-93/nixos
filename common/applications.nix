@@ -5,14 +5,12 @@
     borgbackup
     firefox
     gparted
-    gvfs
     killall
     lightdm
     lxappearance
     neofetch
     nix-index
-    nyxt
-    transmission-gtk
+    transmission_4-gtk
     xfce.thunar
     xfce.tumbler
     unetbootin
