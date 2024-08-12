@@ -57,7 +57,7 @@ in {
       "blueman-applet"
       "firefox"
       "vesktop"
-      "prismlauncher"
+      "xivlauncher"
     ];
   };
 }
