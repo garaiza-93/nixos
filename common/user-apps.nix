@@ -3,6 +3,7 @@
     ani-cli
     gimp
     hue-plus
+    libreoffice-qt
     lutris
     piper
     (vesktop.override { withSystemVencord = false; })
