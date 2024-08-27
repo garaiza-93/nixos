@@ -57,6 +57,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.goose = {
                 imports = [ ./profiles/goose.nix ];
@@ -73,6 +74,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.gustavo = {
                 imports = [ ./profiles/gustavo.nix ];
