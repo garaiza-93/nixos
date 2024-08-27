@@ -7,5 +7,5 @@
     python311Packages.howdoi
     thefuck
   ];
-  imports = [ ./direnv.nix ./editors.nix ./tmux.nix ];
+  imports = [ ./git.nix ./direnv.nix ./editors.nix ./tmux.nix ];
 }
