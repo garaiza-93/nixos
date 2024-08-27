@@ -25,5 +25,6 @@ in {
     retroarch
     (steamtinkerlaunch.overrideAttrs
       (o: { src = inputs.steamtinkerlaunch-master; }))
+    xivlauncher
   ];
 }
