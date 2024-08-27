@@ -1,21 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark-BL-LB";
-      package = pkgs.tokyo-night-gtk;
+      name = "Tokyonight-Dark-xhdpi";
+      package = pkgs.tokyonight-gtk-theme;
     };
-
-    gtk3.bookmarks = [
-      "file:///home/goose/Documents"
-      "file:///home/goose/Downloads"
-      "file:///home/goose/Games"
-      "file:///home/goose/Pictures"
-      "file:///home/goose/Videos"
-      "file:///home/goose/Torrents"
-      "file:///home/hd1/Torrents"
-    ];
   };
+
+  # more handy to use this file imperatively.
+  # also it's annoying having to move this file
+  # due to constant conflicts.
+  home.file.".config/gtk-3.0/bookmarks".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${config.xdg.configHome}/gtk-3.0/bookmarks";
 }
