@@ -4,7 +4,7 @@
   home.username = "gustavo";
   home.homeDirectory = "/home/gustavo";
   home.sessionVariables."ZDOTDIR" = "\${HOME}/.config/zsh";
-  home.packages = with pkgs; [ awscli2 gh fzf ];
+  home.packages = with pkgs; [ awscli2 kubectl gh fzf ];
 
   manual.manpages.enable = true;
 
