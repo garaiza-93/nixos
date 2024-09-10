@@ -11,6 +11,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ../devtools/wsl.nix
     ../devtools/core.nix
     ../devtools/git-hm.nix
     ../common/btop.nix
