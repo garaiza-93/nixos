@@ -6,7 +6,7 @@
   imports = [
     ../ui/x11/ui.nix
     ../common/all.nix
-    ../devtools/core.nix
+    ../devtools/all.nix
     ../zsh/default.nix
     ../prompts/default.nix
   ];
