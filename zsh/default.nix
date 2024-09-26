@@ -2,6 +2,9 @@ let img = ../img;
 in {
   programs.zsh = {
     enable = true;
+    autosuggestion.enable = true;
+    defaultKeymap = "viins";
+
     dotDir = ".config/zsh";
     shellAliases = {
       ls = "ls --color=auto";
@@ -31,6 +34,7 @@ in {
       neofetch = "neofetch --source ${img}/seele-ascii";
       gitexcludefile = "$HOME/.config/nixos/scripts/gitexcludefile.sh";
       updateflakes = "$HOME/.config/nixos/scripts/update_flakes.sh";
+      fuck-it-ssh = "eval $(ssh-agent -s) && ssh-add";
     };
     history = {
       size = 10000;
