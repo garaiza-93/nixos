@@ -29,8 +29,7 @@ in {
         "cd ~/.config/nixos && nix flake update && sudo nixos-rebuild switch --flake .#wsl && cd -";
       updatehm =
         "cd ~/.config/nixos && nix flake update && home-manager switch --flake $HOME/.config/nixos#gustavo-hm && cd -";
-      updatenvim =
-        "cd ~/.config/nixos && nix flake lock --update-input nvim-nixified && sudo nixos-rebuild switch --flake .#EVA-01 && cd -";
+      updatenvim = "cd ~/.config/nixos && nix flake update nvim-nixified";
       neofetch = "neofetch --source ${img}/seele-ascii";
       gitexcludefile = "$HOME/.config/nixos/scripts/gitexcludefile.sh";
       updateflakes = "$HOME/.config/nixos/scripts/update_flakes.sh";

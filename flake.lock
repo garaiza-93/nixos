@@ -763,11 +763,11 @@
         "rustaceanvim": "rustaceanvim"
       },
       "locked": {
-        "lastModified": 1727293481,
-        "narHash": "sha256-jZjlBv1SPXFrgNwBRJJMDCNLKu0tPZkpvMkDZJx8/b4=",
+        "lastModified": 1727371761,
+        "narHash": "sha256-+4Idmf5lrL089DnAcNCPMChXygWPtQIzBfHMVxPxS0Y=",
         "owner": "garaiza-93",
         "repo": "nvim-nixified",
-        "rev": "8a110f0f628706b2024b24f816d464fb1a568b20",
+        "rev": "540e4164a3457bb6024dbd21e515bb77a369375c",
         "type": "github"
       },
       "original": {

@@ -50,15 +50,15 @@
         };
       };
       omnisharp = {
-        command = "omnisharp";
+        command = "${omnisharp-roslyn}/bin/OmniSharp";
         args = [ "-l" "Error" "--languageserver" "-z" ];
       };
     };
     language = [
       {
         name = "c-sharp";
-        # debugger.name = "netcorecdg";
-        # debugger.command = "netcoredbg";
+        debugger.name = "netcoredbg";
+        debugger.command = "${netcoredbg}/bin/netcoredbg";
         language-servers = [ "omnisharp" ];
       }
       {
