@@ -48,6 +48,7 @@ in {
            fi
       }
       add-zsh-hook chpwd load-local-conf
+      bindkey '\t\t' autosuggest-accept
     '';
     envExtra = ''
       export TERM=xterm-256color
