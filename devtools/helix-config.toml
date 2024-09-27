@@ -16,6 +16,9 @@ select = "underline"
 [editor.indent-guides]
 render = true
 
+[editor.soft-wrap]
+enable = true
+
 [editor.statusline]
 left = ["mode", "spinner", "version-control"]
 center = ["file-name"]

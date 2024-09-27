@@ -59,6 +59,7 @@
         name = "c-sharp";
         debugger.name = "netcoredbg";
         debugger.command = "${netcoredbg}/bin/netcoredbg";
+        debugger.transport = "stdio";
         language-servers = [ "omnisharp" ];
       }
       {
