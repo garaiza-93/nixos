@@ -2,9 +2,15 @@
 
 {
   home.packages = with pkgs; [
+    ani-cli
+    animdl
+    miru
+    mpv
+    vlc
+
     feh
     flameshot
-    mpv
+
     pavucontrol
     peek
     playerctl
