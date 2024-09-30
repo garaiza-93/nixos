@@ -8,5 +8,6 @@
 
     nvidia.forceFullCompositionPipeline = true;
     nvidia.modesetting.enable = true;
+    nvidia.open = false;
   };
 }
