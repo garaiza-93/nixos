@@ -9,7 +9,7 @@
       size = 12;
     };
 
-    theme = "Tokyo Night";
+    themeFile = "Catppuccin-Macchiato";
 
     settings = {
       background_opacity = "0.8";

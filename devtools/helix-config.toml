@@ -1,4 +1,4 @@
-theme = "starlight"
+theme = "catppuccin_macchiato"
 
 [editor]
 bufferline = "multiple"
