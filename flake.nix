@@ -43,7 +43,24 @@
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
     , steamtinkerlaunch-master, vesktop-latest, nix-gaming }@inputs:
-    let system = "x86_64-linux";
+    let
+      system = "x86_64-linux";
+      # hoping to use cachix
+      declCachix = builtins.fetchTarball {
+        url =
+          "https://github.com/jonascarpay/declarative-cachix/archive/a2aead56e21e81e3eda1dc58ac2d5e1dc4bf05d7.tar.gz";
+        sha256 = "022fsn8ba29cla5g63vpwc5ys9bwir47jwdxfr5p9ahqrddadfir";
+      };
+      caches = [
+        {
+          name = "helix";
+          sha256 = "0mi1wp45nv86vgiakvhz66av0lnf7vpwk4vwgkmdczikgx6cvrsz";
+        }
+        {
+          name = "nix-community";
+          sha256 = "0m6kb0a0m3pr6bbzqz54x37h5ri121sraj1idfmsrr6prknc7q3x";
+        }
+      ];
     in {
       nixosConfigurations = {
         EVA-01 = nixpkgs.lib.nixosSystem {
@@ -60,7 +77,9 @@
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.goose = {
-                imports = [ ./profiles/goose.nix ];
+                imports =
+                  [ ./profiles/goose.nix "${declCachix}/home-manager.nix" ];
+                caches.cachix = caches;
               };
             }
           ];
@@ -88,6 +107,8 @@
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./profiles/gustavo-hm.nix ];
           extraSpecialArgs = { inherit inputs; };
+          imports = [ ./profiles/goose.nix "${declCachix}/home-manager.nix" ];
+          caches.cachix = caches;
         };
     };
 }
