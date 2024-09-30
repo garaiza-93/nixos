@@ -20,16 +20,15 @@
           msbuild
           ripgrep
 
-          taplo
           marksman
-
-          nodePackages.bash-language-server
           nil
+          taplo
           omnisharp-roslyn
           (python3.withPackages (ps:
             with ps;
             [ python-lsp-server ]
             ++ python-lsp-server.optional-dependencies.all))
+          nodePackages.bash-language-server
           nodePackages.vscode-langservers-extracted
           nodePackages.yaml-language-server
         ])
@@ -43,7 +42,6 @@
     language-server = {
       nil = {
         command = "${nil}/bin/nil";
-        # command = "nil";
         config.nil = {
           formatting.command = [ "${nixpkgs-fmt}/bin/nixpkgs-fmt" ];
           nix.flake.autoEvalInputs = true;
@@ -53,13 +51,32 @@
         command = "${omnisharp-roslyn}/bin/OmniSharp";
         args = [ "-l" "Error" "--languageserver" "-z" ];
       };
+      yaml-language-server = {
+        command = "${yaml-language-server}/bin/yaml-language-server";
+        config.yaml = {
+          schemas = { kubernetes = "/*.y{a,}ml"; };
+          format.enable = true;
+        };
+      };
     };
     language = [
       {
+        name = "bash";
+        auto-format = true;
+        file-types = [ "sh" "bash" ];
+        formatter = {
+          command = "${shfmt}/bin/shfmt";
+          # Indent with 2 spaces, simplify the code, indent switch cases, add space after redirection
+          args = [ "-i" "4" "-s" "-ci" "-sr" ];
+        };
+      }
+      {
         name = "c-sharp";
-        debugger.name = "netcoredbg";
-        debugger.command = "${netcoredbg}/bin/netcoredbg";
-        debugger.transport = "stdio";
+        # debugger = {
+        #   debugger.name = "netcoredbg";
+        #   debugger.command = "${netcoredbg}/bin/netcoredbg";
+        #   debugger.transport = "stdio";
+        # };
         language-servers = [ "omnisharp" ];
       }
       {
@@ -75,6 +92,23 @@
           name = "marksman";
           except-features = [ "format" ];
         }];
+      }
+      {
+        name = "python";
+        language-servers = [{ name = "pylsp"; }];
+      }
+      {
+        name = "nix";
+        language-servers = [ "nil" ];
+      }
+      {
+        name = "toml";
+        language-servers = [{ name = "taplo"; }];
+      }
+      {
+        name = "yaml";
+        file-types = [ "yaml" "yml" ];
+        language-servers = [ "yaml-language-server" ];
       }
     ];
   };
