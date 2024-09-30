@@ -15,6 +15,7 @@ in {
       fucknvidia = "sudo nvidia-settings";
       sysedit = "cd ~/.config/nixos && nvim flake.nix";
       nvimedit = "cd ~/.config/nvim && nvim flake.nix";
+      helixedit = "cd ~/.config/nixos && hx devtools/helix-config.toml";
       updateinput = ''
         nix flake metadata | grep -E "^├|^└" | sed 's/:.*//g' | sed -e 's/\x1b\[[0-9;]*m//g' | sed 's/[^a-zA-Z0-9\-]//g' | fzf | xargs nix flake lock --update-input'';
       buildpersonal =
