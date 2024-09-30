@@ -80,7 +80,10 @@
       mouse.accelProfile = "flat";
     };
 
-    displayManager.defaultSession = "none+bspwm";
+    displayManager = {
+      sddm.enable = true;
+      defaultSession = "none+bspwm";
+    };
   };
 
   programs = {
