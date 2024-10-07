@@ -6,7 +6,6 @@
     firefox
     gparted
     killall
-    lightdm
     lxappearance
     neofetch
     nix-index
@@ -18,6 +17,5 @@
     wget
     xdotool
     xorg.xwininfo
-    yai
   ];
 }
