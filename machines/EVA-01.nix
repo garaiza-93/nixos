@@ -38,13 +38,13 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/0b3ff611-7c24-4943-8768-4a46da0afc32";
+      device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
     };
-
     "/boot" = {
-      device = "/dev/disk/by-uuid/8DB2-8ACE";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
     "/home/hd1" = {
       device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";
@@ -55,6 +55,10 @@
       fsType = "ext4";
     };
   };
+  swapDevices = [
+    { device = "/dev/disk/by-label/swap"; }
+  ];
+
 
   xdg.portal = {
     config.common.default = "gtk";
