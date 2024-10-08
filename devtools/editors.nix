@@ -1,11 +1,25 @@
-{ pkgs, lib, config, inputs, ... }: {
-  home.packages = [ inputs.nvim-nixified.packages.x86_64-linux.default ];
+{ pkgs, lib, config, inputs, system, ... }:
+let
+  fenixPkgs = import inputs.nixpkgs {
+    inherit system;
+    overlays = [ inputs.fenix.overlays.default ];
+  };
+
+  toolchain = fenixPkgs.fenix.stable;
+in
+{
+  home.packages = [ inputs.nvim-nixified.packages.x86_64-linux.default ] ++
+    (with fenixPkgs; [
+      (with toolchain; cargo rustc rust-src clippy rustfmt)
+      pkg-config
+      cargo-watch
+    ]);
 
   programs.helix.enable = true;
   # Handle Helix configuration imperatively. Might port to the module later.
   home.file.".config/helix/config.toml".source =
     config.lib.file.mkOutOfStoreSymlink
-    "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
+      "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
 
   programs.helix.package = pkgs.helix.overrideAttrs (self: {
     makeWrapperArgs = with pkgs;
@@ -34,7 +48,7 @@
         ])
         "--set-default"
         "RUST_SRC_PATH"
-        "${rustPlatform.rustcSrc}/library"
+        "${toolchain.rust-src}/lib/rustlib/src/rust/library"
       ];
   });
 
