@@ -14,6 +14,7 @@
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nvim-nixified.url = "github:garaiza-93/nvim-nixified";
+    fenix.url = "github:nix-community/fenix";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager-old.inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +43,7 @@
 
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master, vesktop-latest, nix-gaming }@inputs:
+    , steamtinkerlaunch-master, vesktop-latest, nix-gaming, fenix }@inputs:
     let
       system = "x86_64-linux";
       # hoping to use cachix
@@ -75,7 +76,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs system; };
               home-manager.users.goose = {
                 imports =
                   [ ./profiles/goose.nix "${declCachix}/home-manager.nix" ];
