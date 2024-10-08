@@ -8,12 +8,18 @@ let
   toolchain = fenixPkgs.fenix.stable;
 in
 {
-  home.packages = [ inputs.nvim-nixified.packages.x86_64-linux.default ] ++
-    (with fenixPkgs; [
-      (with toolchain; cargo rustc rust-src clippy rustfmt)
-      pkg-config
-      cargo-watch
-    ]);
+  home.packages = with pkgs; [
+    inputs.nvim-nixified.packages.x86_64-linux.default
+    pkg-config
+    cargo-watch
+  ] ++
+  (with toolchain; [
+    cargo
+    rustc
+    rust-src
+    clippy
+    rustfmt
+  ]);
 
   programs.helix.enable = true;
   # Handle Helix configuration imperatively. Might port to the module later.
