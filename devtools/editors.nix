@@ -6,26 +6,19 @@ let
   };
 
   toolchain = fenixPkgs.fenix.stable;
-in
-{
-  home.packages = with pkgs; [
-    inputs.nvim-nixified.packages.x86_64-linux.default
-    pkg-config
-    cargo-watch
-  ] ++
-  (with toolchain; [
-    cargo
-    rustc
-    rust-src
-    clippy
-    rustfmt
-  ]);
+in {
+  home.packages = with pkgs;
+    [
+      inputs.nvim-nixified.packages.x86_64-linux.default
+      pkg-config
+      cargo-watch
+    ] ++ (with toolchain; [ cargo rustc rust-src rustfmt ]);
 
   programs.helix.enable = true;
   # Handle Helix configuration imperatively. Might port to the module later.
   home.file.".config/helix/config.toml".source =
     config.lib.file.mkOutOfStoreSymlink
-      "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
+    "${config.xdg.configHome}/nixos/devtools/helix-config.toml";
 
   programs.helix.package = pkgs.helix.overrideAttrs (self: {
     makeWrapperArgs = with pkgs;
@@ -40,6 +33,8 @@ in
           msbuild
           ripgrep
 
+          toolchain.clippy
+          toolchain.rust-analyzer
           marksman
           nil
           taplo
@@ -70,6 +65,10 @@ in
       omnisharp = {
         command = "${omnisharp-roslyn}/bin/OmniSharp";
         args = [ "-l" "Error" "--languageserver" "-z" ];
+      };
+      rust-analyzer = {
+        command = "${toolchain.rust-analyzer}/bin/rust-analyzer";
+        config.checkOnSave.command = "clippy";
       };
       yaml-language-server = {
         command = "${yaml-language-server}/bin/yaml-language-server";
@@ -120,6 +119,31 @@ in
       {
         name = "nix";
         language-servers = [ "nil" ];
+      }
+      {
+        name = "rust";
+        language-servers = [ "rust-analyzer" ];
+        debugger = {
+          name = "lldb-dap";
+          command = "${lldb}/bin/lldb-dap";
+          transport = "stdio";
+          templates = [{
+            name = "binary";
+            request = "launch";
+            completion = [{
+              name = "binary";
+              completion = "filename";
+            }];
+            # Workaround, see helix wiki
+            # https://github.com/helix-editor/helix/wiki/Debugger-Configurations#configuration-for-rust
+            args = {
+              program = "{0}";
+              initCommands = [
+                "command script import /usr/local/etc/lldb_dap_rustc_primer.py"
+              ];
+            };
+          }];
+        };
       }
       {
         name = "toml";
