@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     ani-cli
+    discord
     gimp
     hue-plus
     libreoffice-qt
