@@ -1,8 +1,17 @@
 {
   nixConfig = {
-    extra-substituters = [ "https://helix.cachix.org" ];
-    extra-trusted-public-keys =
-      [ "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs=" ];
+    substituters = [
+      "https://cosmic.cachix.org/"
+      "https://nyx.chaotic.cx/"
+      "https://nix-community.cachix.org"
+      "https://helix.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+    ];
   };
 
   inputs = {
@@ -44,24 +53,7 @@
   outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
     , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
     , steamtinkerlaunch-master, vesktop-latest, nix-gaming, fenix }@inputs:
-    let
-      system = "x86_64-linux";
-      # hoping to use cachix
-      declCachix = builtins.fetchTarball {
-        url =
-          "https://github.com/jonascarpay/declarative-cachix/archive/a2aead56e21e81e3eda1dc58ac2d5e1dc4bf05d7.tar.gz";
-        sha256 = "022fsn8ba29cla5g63vpwc5ys9bwir47jwdxfr5p9ahqrddadfir";
-      };
-      caches = [
-        {
-          name = "helix";
-          sha256 = "0mi1wp45nv86vgiakvhz66av0lnf7vpwk4vwgkmdczikgx6cvrsz";
-        }
-        {
-          name = "nix-community";
-          sha256 = "0m6kb0a0m3pr6bbzqz54x37h5ri121sraj1idfmsrr6prknc7q3x";
-        }
-      ];
+    let system = "x86_64-linux";
     in {
       nixosConfigurations = {
         EVA-01 = nixpkgs.lib.nixosSystem {
@@ -78,9 +70,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = { inherit inputs system; };
               home-manager.users.goose = {
-                imports =
-                  [ ./profiles/goose.nix "${declCachix}/home-manager.nix" ];
-                caches.cachix = caches;
+                imports = [ ./profiles/goose.nix ];
               };
             }
           ];
@@ -108,8 +98,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./profiles/gustavo-hm.nix ];
           extraSpecialArgs = { inherit inputs; };
-          imports = [ ./profiles/goose.nix "${declCachix}/home-manager.nix" ];
-          caches.cachix = caches;
+          imports = [ ./profiles/goose.nix ];
         };
     };
 }
