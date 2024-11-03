@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   imports = [
     ./applications.nix
