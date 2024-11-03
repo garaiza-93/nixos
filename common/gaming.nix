@@ -3,7 +3,7 @@ let
   mupen64plus-patched = pkgs.libretro.mupen64plus.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [ ../patches/larger_cart_rom.patch ];
   });
-  retroarch = pkgs.retroarch.override {
+  my-retroarch = pkgs.retroarch.override {
     cores = with pkgs.libretro; [
       dolphin
       pcsx-rearmed
@@ -22,7 +22,7 @@ in {
     protontricks
     protonup-ng
     r2modman
-    retroarch
+    my-retroarch
     (steamtinkerlaunch.overrideAttrs
       (o: { src = inputs.steamtinkerlaunch-master; }))
     xivlauncher
