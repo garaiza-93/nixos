@@ -9,7 +9,7 @@ let
 in {
   home.packages = with pkgs;
     [
-      inputs.nvim-nixified.packages.x86_64-linux.default
+      # inputs.nvim-nixified.packages.x86_64-linux.default
       pkg-config
       cargo-watch
     ] ++ (with toolchain; [ cargo rustc rust-src rustfmt ]);
@@ -59,7 +59,9 @@ in {
         command = "${nil}/bin/nil";
         config.nil = {
           formatting.command = [ "${nixpkgs-fmt}/bin/nixpkgs-fmt" ];
-          nix.flake.autoEvalInputs = true;
+          # if you uncomment, be sure to add ssh key to agent
+          # before starting Helix!!!
+          # nix.flake.autoEvalInputs = true;
         };
       };
       omnisharp = {
@@ -68,7 +70,7 @@ in {
       };
       rust-analyzer = {
         command = "${toolchain.rust-analyzer}/bin/rust-analyzer";
-        config.checkOnSave.command = "clippy";
+        config = { check.command = "clippy"; };
       };
       yaml-language-server = {
         command = "${yaml-language-server}/bin/yaml-language-server";
@@ -123,6 +125,7 @@ in {
       {
         name = "rust";
         language-servers = [ "rust-analyzer" ];
+        auto-format = true;
         debugger = {
           name = "lldb-dap";
           command = "${lldb}/bin/lldb-dap";
