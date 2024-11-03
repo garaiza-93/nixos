@@ -17,6 +17,8 @@ in {
       bspc config focused_border_color "#df588e"
 
       bspc config automatic_scheme spiral
+
+      xsetroot -cursor_name left_ptr &
     '';
 
     rules = {
