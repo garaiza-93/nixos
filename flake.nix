@@ -15,18 +15,25 @@
   };
 
   inputs = {
-    dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
-    home-manager-old.url = "github:nix-community/home-manager/release-22.11";
-    home-manager.url = "github:nix-community/home-manager";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager-old.url = "github:nix-community/home-manager/release-22.11";
+
+    dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
     fenix.url = "github:nix-community/fenix";
+    lobster-git.url = "github:justchokingaround/lobster";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nvim-nixified.url = "github:garaiza-93/nvim-nixified";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager-old.inputs.nixpkgs.follows = "nixpkgs";
+    lobster-git.inputs.nixpkgs.follows = "nixpkgs";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-old";
 
     polybar-master = {
@@ -50,9 +57,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nixos-wsl, home-manager
-    , home-manager-old, polybar-master, nvim-nixified, dolphin-emu-nix
-    , steamtinkerlaunch-master, vesktop-latest, nix-gaming, fenix }@inputs:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-old, nixos-cosmic, nixos-wsl
+    , home-manager, home-manager-old, nix-gaming, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -63,6 +69,7 @@
             ./ui/x11/xserver/EVA-01.nix
             nix-gaming.nixosModules.pipewireLowLatency
             nix-gaming.nixosModules.platformOptimizations
+            nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
