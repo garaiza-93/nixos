@@ -13,7 +13,7 @@
       user.username = "garaiza-93";
       init.defaultBranch = "master";
 
-      core.editor = "nvim";
+      core.editor = "hx";
       core.whitespace = "fix,-indent-with-non-tab,tailing-space,cr-at-eol";
 
       web.browser = "firefox";
