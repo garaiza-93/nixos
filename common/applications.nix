@@ -9,6 +9,7 @@
     lxappearance
     neofetch
     nix-index
+    ripgrep
     transmission_4-gtk
     xfce.thunar
     xfce.tumbler
