@@ -104,8 +104,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./profiles/gustavo-hm.nix ];
-          extraSpecialArgs = { inherit inputs; };
-          imports = [ ./profiles/goose.nix ];
+          extraSpecialArgs = { inherit inputs system; };
         };
     };
 }
