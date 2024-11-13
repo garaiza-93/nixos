@@ -16,6 +16,9 @@
     kernelModules = [ "kvm-amd" ];
   };
 
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
+
   nix = {
     gc = {
       automatic = true;
@@ -84,10 +87,9 @@
       mouse.accelProfile = "flat";
     };
 
-    displayManager = {
-      sddm.enable = true;
-      defaultSession = "none+bspwm";
-    };
+    desktopManager.cosmic.enable = true;
+    displayManager.sddm.enable = true;
+    # displayManager.cosmic-greeter.enable = true;
   };
 
   programs = {
