@@ -55,6 +55,7 @@ in {
       export EDITOR=hx
       export TERM=xterm-256color
       export DIRENV_LOG_FORMAT=
+      export XDG_CONFIG_HOME=$HOME/.config
       export SYSTEM_FLAKE_DIR=$XDG_CONFIG_HOME/nixos
       eval "$(direnv hook zsh)"
     '';

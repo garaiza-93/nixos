@@ -15,7 +15,7 @@
     ../devtools/core.nix
     ../devtools/git-hm.nix
     ../common/btop.nix
-    ../zsh/gustavo-hm-zsh.nix
+    ../zsh/gustavo-hm.nix
     ../prompts/gustavo-hm.nix
   ];
 }
