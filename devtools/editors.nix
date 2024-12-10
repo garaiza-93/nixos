@@ -44,6 +44,7 @@ in {
             [ python-lsp-server ]
             ++ python-lsp-server.optional-dependencies.all))
           nodePackages.bash-language-server
+          nodePackages.typescript-language-server
           nodePackages.vscode-langservers-extracted
           nodePackages.yaml-language-server
         ])
