@@ -50,6 +50,12 @@ in {
       }
       add-zsh-hook chpwd load-local-conf
       bindkey '^[[Z' autosuggest-accept
+
+      arch()
+      {
+      distrobox enter jc141-arch -- VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia.json bash "$@"
+      distrobox shutdown
+      };
     '';
     envExtra = ''
       export EDITOR=hx
