@@ -3,15 +3,16 @@ let
   mupen64plus-patched = pkgs.libretro.mupen64plus.overrideAttrs (o: {
     patches = (o.patches or [ ]) ++ [ ../patches/larger_cart_rom.patch ];
   });
-  my-retroarch = pkgs.retroarch.override {
-    cores = with pkgs.libretro; [
+  my-retroarch = pkgs.retroarch.withCores (
+    cores: with pkgs.libretro; [
       dolphin
       pcsx-rearmed
       mupen64plus-patched
       flycast
-    ];
-  };
-in {
+    ]
+  );
+in
+{
   home.sessionVariables."STEAM_EXTRA_COMPAT_TOOLS_PATHS" =
     "\${HOME}/.steam/root/compatibilitytools.d";
   home.packages = with pkgs; [
