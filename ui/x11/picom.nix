@@ -15,6 +15,8 @@
         background-fixed = false;
         kern = "5x5box";
       };
+      shadow-exclude = [ "class_g ?= 'Peek'" ];
+      blur-background-exclude = [ "class_g ?= 'Peek'" ];
     };
   };
 }
