@@ -16,8 +16,9 @@
     kernelModules = [ "kvm-amd" ];
   };
 
-  security.pam.services.sddm.enableGnomeKeyring = true;
-  services.gnome.gnome-keyring.enable = true;
+  #security.pam.services.sddm.enableGnomeKeyring = true;
+  # trying to manage this using home-manager
+  # services.gnome.gnome-keyring.enable = true;
 
   nix = {
     gc = {
@@ -53,19 +54,19 @@
       device = "/dev/disk/by-uuid/30b739a9-bca2-45c6-b939-a688f675a92b";
       fsType = "ext4";
     };
-    "/home/ssd1" = {
-      device = "/dev/disk/by-uuid/535f71b3-d1bb-4dce-9ab3-3cd91bf431fc";
-      fsType = "ext4";
-    };
+    # "/home/ssd1" = {
+    #   device = "/dev/disk/by-uuid/535f71b3-d1bb-4dce-9ab3-3cd91bf431fc";
+    #   fsType = "ext4";
+    # };
   };
   swapDevices = [
     { device = "/dev/disk/by-label/swap"; }
   ];
 
-
   xdg.portal = {
     config.common.default = "gtk";
     enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   networking = {
@@ -82,12 +83,13 @@
   services = {
     ratbagd.enable = true;
     flatpak.enable = true;
+    logmein-hamachi.enable = true;
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
     };
 
-    desktopManager.cosmic.enable = true;
+    # desktopManager.cosmic.enable = true;
     displayManager.sddm.enable = true;
     # displayManager.cosmic-greeter.enable = true;
   };
@@ -97,6 +99,7 @@
     zsh.enable = true;
     java.enable = true;
     dconf.enable = true;
+    seahorse.enable = true;
 
     steam.enable = true;
     steam.platformOptimizations.enable = true;
@@ -110,6 +113,7 @@
   i18n.defaultLocale = "en_US.utf8";
 
   environment = {
+    systemPackages = with pkgs; [ haguichi ];
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/libexec" ];
     sessionVariables = {
