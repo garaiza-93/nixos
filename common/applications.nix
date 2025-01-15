@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     ani-cli
     borgbackup
+    distrobox
     firefox
     gparted
     killall
