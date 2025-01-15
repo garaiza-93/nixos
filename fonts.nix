@@ -2,7 +2,7 @@
 
 {
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
     iosevka-comfy.comfy
     iosevka-comfy.comfy-wide
   ];
