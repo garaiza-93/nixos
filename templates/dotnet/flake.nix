@@ -31,7 +31,7 @@
             buildInputs = with pkgs; [
               nvim-dotnet
               #basics
-              dotnet-sdk_7
+              dotnet-sdk
               dotnet-runtime
 
               #packages

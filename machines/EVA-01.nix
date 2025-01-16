@@ -103,6 +103,8 @@
 
     steam.enable = true;
     steam.platformOptimizations.enable = true;
+
+    alvr.enable = true;
   };
 
   hardware.cpu.amd.updateMicrocode =

@@ -1,13 +1,13 @@
 {
   nixConfig = {
     substituters = [
-      "https://cosmic.cachix.org/"
+      # "https://cosmic.cachix.org/"
       "https://nyx.chaotic.cx/"
       "https://nix-community.cachix.org"
       "https://helix.cachix.org"
     ];
     trusted-public-keys = [
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      # "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
@@ -16,7 +16,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -27,7 +27,7 @@
     lobster-git.url = "github:justchokingaround/lobster";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nvim-nixified.url = "github:garaiza-93/nvim-nixified";
 
@@ -57,7 +57,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-old, nixos-cosmic, nixos-wsl
+  outputs = inputs@{ self, nixpkgs, nixpkgs-old, nixos-wsl
     , home-manager, home-manager-old, nix-gaming, ... }:
     let system = "x86_64-linux";
     in {
@@ -69,7 +69,7 @@
             ./ui/x11/xserver/EVA-01.nix
             nix-gaming.nixosModules.pipewireLowLatency
             nix-gaming.nixosModules.platformOptimizations
-            nixos-cosmic.nixosModules.default
+            # nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
