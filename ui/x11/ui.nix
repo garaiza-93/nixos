@@ -1,6 +1,6 @@
-{ ... }:
-
 {
+  programs.eww.enable = true;
+  programs.eww.configDir = ../eww;
   imports = [
     #./i3.nix
     ./sxhkd.nix

@@ -1,10 +1,16 @@
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    leftwm-theme
+    leftwm-config
+  ];
   services.xserver = {
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
     desktopManager.xterm.enable = false;
     windowManager.bspwm.enable = true;
+    windowManager.leftwm.enable = true;
     config = ''
       Section "Screen"
 
