@@ -88,6 +88,8 @@
       enable = true;
       mouse.accelProfile = "flat";
     };
+    monado.enable = true;
+    monado.defaultRuntime = true;
 
     # desktopManager.cosmic.enable = true;
     displayManager.sddm.enable = true;
