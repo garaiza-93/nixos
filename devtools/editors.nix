@@ -30,7 +30,7 @@ in {
           lldb
           netcoredbg
           dotnet-sdk
-          msbuild
+          # msbuild
           ripgrep
 
           toolchain.clippy

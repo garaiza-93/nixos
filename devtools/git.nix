@@ -1,6 +1,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
     userName = "Gustavo Araiza";
     userEmail = "57430880+garaiza-93@users.noreply.github.com";
     aliases = {
