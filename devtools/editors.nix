@@ -39,10 +39,10 @@ in {
           nil
           taplo
           omnisharp-roslyn
-          (python3.withPackages (ps:
-            with ps;
-            [ python-lsp-server ]
-            ++ python-lsp-server.optional-dependencies.all))
+          # (python3.withPackages (ps:
+          #   with ps;
+          #   [ python-lsp-server ]
+          #   ++ python-lsp-server.optional-dependencies.all))
           nodePackages.bash-language-server
           nodePackages.typescript-language-server
           nodePackages.vscode-langservers-extracted
