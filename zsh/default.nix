@@ -53,7 +53,7 @@ in {
 
       jc141()
       {
-        distrobox enter --root jc141-arch -- VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json bash "$@"
+        distrobox enter --root jc141-arch -- VK_DRIVER_FILES=/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json bash "$@"
         distrobox shutdown
       }
     '';
