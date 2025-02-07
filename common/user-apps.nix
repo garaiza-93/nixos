@@ -6,6 +6,7 @@
     hue-plus
     libreoffice-qt
     lutris
+    nur.repos.xeals.cura5
     piper
     (vesktop.override { withSystemVencord = false; })
     wineWowPackages.full

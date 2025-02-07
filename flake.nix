@@ -18,6 +18,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-22.11";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager-old.url = "github:nix-community/home-manager/release-22.11";
@@ -57,8 +61,16 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-old, nixos-wsl
-    , home-manager, home-manager-old, nix-gaming, ... }:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , nixpkgs-old
+    , nixos-wsl
+    , home-manager
+    , home-manager-old
+    , nix-gaming
+    , ...
+    }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {

@@ -11,6 +11,7 @@ in {
 
       "alt + shift + q" = "bspc node -c";
       "alt + shift + x" = "xwininfo | xdotool getwindowfocus windowkill";
+      "alt + shift + z" = "~/Programs/Scripts/crafting/minecraft_autoclicker.sh";
 
       "{_,shift + }@Print" = "{flameshot gui,peek}";
 

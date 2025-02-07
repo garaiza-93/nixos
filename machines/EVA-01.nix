@@ -117,7 +117,7 @@
   i18n.defaultLocale = "en_US.utf8";
 
   environment = {
-    systemPackages = with pkgs; [ haguichi ];
+    systemPackages = with pkgs; [ haguichi python3 ];
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/libexec" ];
     sessionVariables = {

@@ -51,11 +51,11 @@ in {
       add-zsh-hook chpwd load-local-conf
       bindkey '^[[Z' autosuggest-accept
 
-      arch()
+      jc141()
       {
-      distrobox enter jc141-arch -- VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia.json bash "$@"
-      distrobox shutdown
-      };
+        distrobox enter --root jc141-arch -- VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json bash "$@"
+        distrobox shutdown
+      }
     '';
     envExtra = ''
       export EDITOR=hx
