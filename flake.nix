@@ -69,6 +69,7 @@
     , home-manager
     , home-manager-old
     , nix-gaming
+    , nur
     , ...
     }:
     let system = "x86_64-linux";
@@ -82,6 +83,7 @@
             nix-gaming.nixosModules.pipewireLowLatency
             nix-gaming.nixosModules.platformOptimizations
             # nixos-cosmic.nixosModules.default
+            nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
