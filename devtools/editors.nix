@@ -29,7 +29,6 @@ in {
         (lib.makeBinPath [
           lldb
           netcoredbg
-          dotnet-sdk
           # msbuild
           ripgrep
 
@@ -94,12 +93,21 @@ in {
       }
       {
         name = "c-sharp";
-        # debugger = {
-        #   debugger.name = "netcoredbg";
-        #   debugger.command = "${netcoredbg}/bin/netcoredbg";
-        #   debugger.transport = "stdio";
-        # };
         language-servers = [ "omnisharp" ];
+        auto-format = true;
+        # debugger = {
+        #   name = "netcoredbg";
+        #   command = "${netcoredbg}/bin/netcoredbg";
+        #   transport = "stdio";
+        #   templates = [{
+        #     name = "binary";
+        #     request = "launch";
+        #     completion = [{
+        #       name = "binary";
+        #       completion = "filename";
+        #     }];
+        #   }];
+        # };
       }
       {
         name = "json";
